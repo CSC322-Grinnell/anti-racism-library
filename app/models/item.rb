@@ -6,4 +6,5 @@ class Item < ApplicationRecord
     validates :author, presence: true, length: { maximum: 50 }              #author of the item
     validates :description, presence: true, length: { maximum: 1000 }       #description of the item
     validates :category, presence: true                                     #category of the item
+
 end

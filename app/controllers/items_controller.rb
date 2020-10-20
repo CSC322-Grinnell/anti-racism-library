@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def edit                                    #edit library items
     @item = Item.find(params[:id])
   end
-   
+    
   def create                                  #function meant to handle the creation of a new library item in the database
     @item = Item.new(item_params)
     if @item.save

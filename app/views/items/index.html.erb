@@ -1,9 +1,29 @@
 <% provide(:title, 'All resources') %> 
 <h1>All library resources</h1>
-    <ul class="items">
-        <% @items.each do |item| %>
-            <li>
-            <%= link_to item.title, item %>
-            </li> 
-        <% end %>
-    </ul>
+<div class="scroll"> 
+ <table>
+  <tr>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @items.each do |item| %>
+    <tr>
+      <td>  <%= link_to item.title, item %></td>
+      
+      <td> <div class="horizontalgap" style="width:200px"></div> </td>
+      <td><%= link_to 'Edit', edit_item_path(item) %></td>
+      
+     <td> <div class="horizontalgap" style="width:10px"></div> </td>
+      <td><%= link_to 'Destroy', item_path(item),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<style>
+    div.scroll{width: 100; height: auto; overflow: scroll; scrollbar-color: black}
+ 
+</style>
+

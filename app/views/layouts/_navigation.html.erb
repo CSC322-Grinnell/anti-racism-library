@@ -8,27 +8,29 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/about_us">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="\items">Resources</a>
+        <a class="nav-link" href="/items/new">Add a resource</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Admin
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item " href="/users/sign_up">Sign up</a>
-          <a class="dropdown-item" href="/users/sign_in">Sign in</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="/items">Resources</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="\items">Suggest a resource</a>
+        <a class="nav-link" href="/suggest_a_resource">Suggest a resource</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="\items">Contact us</a>
+        <a class="nav-link" href="/contact_us">Contact us</a>
       </li>
     </ul>
+     <ul class="navbar-nav mr-auto"> 
+      <% if user_signed_in? %>
+        <%= link_to '<button type="button">Logout</button>'.html_safe, destroy_user_session_path, method: :delete %>
+        <%= link_to '<button type="button">Edit User</button>'.html_safe, 'users/edit' %>
+      <% else %>
+        <%= link_to '<button type="button">Log In</button>'.html_safe, new_user_session_path %>
+      <% end %>
+      </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-light" type="submit">Search</button>

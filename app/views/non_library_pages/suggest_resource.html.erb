@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=email], select, textarea {
+  width: 100%;
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0px 0px;
+  border: none;
+  width : 20%;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  /*background-color: #f2f2f2; */
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<h5> Suggest A Resource </h5>
+
+<div class="container">
+  <form action="/action_page.php">
+    <label for="flname">First and Last Name</label>
+    <input type="text" id="flname" name="first_and_last_name" placeholder="Your name..">
+
+    <label for="email"> Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Your email..">
+    
+    <label for="description"> Description of the resource </label>
+    <textarea id="description" name="description" placeholder="Write something.." style="height:30px"></textarea>
+    
+    <label for="link"> Link to the Resource </label>
+    <input type="text" id="flname" name="link" placeholder="Link to the resource..">
+   
+   <label for="file"> or Upload a File</label>
+    <input type="file" id="myFile" name="filename">
+    
+    <br>
+    <br>
+    
+    <input type="submit" value="Submit">
+    
+  </form>
+</div>
+
+</body>
+</html>
+
