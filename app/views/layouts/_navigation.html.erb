@@ -26,6 +26,7 @@
      <ul class="navbar-nav mr-auto"> 
       <% if user_signed_in? %>
         <%= link_to '<button type="button">Logout</button>'.html_safe, destroy_user_session_path, method: :delete %>
+        <%= link_to '<button type="button">Edit User</button>'.html_safe, 'users/edit' %>
       <% else %>
         <%= link_to '<button type="button">Log In</button>'.html_safe, new_user_session_path %>
       <% end %>
