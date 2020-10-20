@@ -6,7 +6,7 @@ Client:
 Nicole Eikmeier
 
 Resources:
-Devise Gem - Flexible Gem for authentication purposes (logging in, admin authorization, email confirmations, etc.)
+Devise Gem - Flexible Gem for authentication purposes
 
 -------
 Purpose
