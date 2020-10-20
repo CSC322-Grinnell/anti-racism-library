@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User::ConfirmationsController < Devise::ConfirmationsController
+  
+  #Devise Generated controller for the User. https://github.com/heartcombo/devise/wiki
+  
   # GET /resource/confirmation/new
   def new
     super

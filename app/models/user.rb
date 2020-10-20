@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+
+  #Devise Generated Model for the Users that has been edited by the ARL Team. Many functionalities are derived from the Devise Gem. This model comfirms
+  #that the email being used is a Grinnell email (@grinnell.edu)
+
+  
+  #Calls methods from the Devise Gem that handle many of the functionalities of the login/sign up process.
+
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, authentication_keys: [:login]

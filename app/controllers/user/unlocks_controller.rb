@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User::UnlocksController < Devise::UnlocksController
+  
+  #Devise Generated controller for the User. https://github.com/heartcombo/devise/wiki
+  
   # GET /resource/unlock/new
   # def new
   #   super

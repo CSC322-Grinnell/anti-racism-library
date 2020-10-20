@@ -1,17 +1,64 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
+/*color scheme */
 $dark: black;
-$grinnell-red: rgb(218, 41, 28);
+$light: white;
+$background-dark: rgb(218, 41, 28); /* grinnell-red */
 $background-light: rgb(255,236,236);
 
-.navbar {
-        margin-bottom: 0;
-        background: black;
+
+.btn-primary {
+        color: $dark;
+        border-color: $light;
+        margin-bottom: 5px;
 }
+
+.btn-sm {
+        background-color: $light;
+        display: inline-block;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: $background-dark;
+  color: $dark;
+  text-align: center;
+}
+
+.jumbotron {
+        margin-top: 40px;
+        background: $background-dark;
+        color: $light;
+        text-align: center;
+        p {
+                color: $light;
+                font-size: 26px;
+        }
+}
+
+.link {
+        color: $light;
+}
+
+.navbar {
+        margin-bottom: 20px;
+        background: $dark ;
+} 
+
+.row{
+        margin-top: 40px;
+}
+
 body {
        background: $background-light;
-        color: black;
+        color: $dark;
         font-family: 'Merriweather', sans-serif;
 }
 h1,
@@ -19,32 +66,16 @@ h2 {
         margin-top: 40px;
         font-weight: bold;
 }
+h5{
+      font-weight: bold;  
+}
 p {
         font-size: 16px;
 }
 
-.jumbotron {
-        background: #0048CD;
-        color: white;
-        text-align: center;
-        p {
-                color: white;
-                font-size: 26px;
-        }
-}
-.link {
-        color: white;
-}
-.btn-primary {
-        color: black;
-        border-color: white;
-        margin-bottom: 5px;
-}
-.btn-sm {
-        background-color: white;
-        display: inline-block;
-}
-img,
+
+
+/*img,
 video,
 audio {
         margin-top: 20px;
@@ -54,6 +85,7 @@ caption {
 
         float: left;
         clear: both;
+}*/
 
 }
 .footer {

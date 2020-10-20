@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2020_10_11_223423) do
 
-  create_table "items", force: :cascade do |t|
-    t.string "author"
+  create_table "items", force: :cascade do |t|                      #Table for the library items. Includes: author, title, description, date created
+    t.string "author"                                               #/edited, the url, and category
     t.string "title"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_223423) do
     t.string "category"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+  create_table "users", force: :cascade do |t|                      #Table for the users. Includes: email, username, encrypted_password, reset_password
+    t.string "email", default: "", null: false                      #token, 
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
