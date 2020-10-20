@@ -1,6 +1,7 @@
 # anti-racism-library
 ARL Team:
 Milica Cvrkota, Anushka Kulshereshtha, Prajita Niraula, Lanea Rohan, and Rudy Vega
+
 Client:
 Nicole Eikmeier
 
