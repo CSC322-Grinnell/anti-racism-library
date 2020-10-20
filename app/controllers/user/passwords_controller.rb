@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User::PasswordsController < Devise::PasswordsController
+  
+  #Devise Generated controller for the User. https://github.com/heartcombo/devise/wiki
+  
   # GET /resource/password/new
   # def new
   #   super

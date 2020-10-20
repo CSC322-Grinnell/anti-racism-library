@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User::SessionsController < Devise::SessionsController
+ 
+ #Devise Generated controller for the User. https://github.com/heartcombo/devise/wiki
+ 
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
