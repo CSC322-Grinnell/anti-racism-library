@@ -15,5 +15,10 @@ class NonLibraryPagesControllerTest < ActionDispatch::IntegrationTest
     get about_us_url
     assert_response :success
   end
+  
+    test "should get root/home" do 
+    get root_url
+    assert_response :success
+  end 
 
 end

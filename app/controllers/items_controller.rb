@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
   
-  
   def new
     @item = Item.new
   end
@@ -23,28 +22,28 @@ class ItemsController < ApplicationController
   
  
    #if current_user.try(:admin?)
-    def create
-      @item = Item.new(item_params)
-      if @item.save
+  def create
+    @item = Item.new(item_params)
+    if @item.save
         flash[:success] = "You have added a new resource item to the library!"
         redirect_to '/items/new'
-      else
+    else
         render 'new'
-      end
-    end 
+    end
+  end 
    #end
   
   
   
 
-   def update
-     @item = Item.find(params[:id])
-     if @item.update(item_params)
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
         redirect_to @item
-     else
+    else
         render 'edit'
-     end
-   end
+    end
+  end
  
  
  
