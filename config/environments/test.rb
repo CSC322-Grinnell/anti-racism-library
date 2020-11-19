@@ -45,4 +45,7 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+  
+  # resolve errors in test cases with no defaul mailer option
+  config.action_mailer.default_url_options = {host: "test@gmail.com"}
 end
