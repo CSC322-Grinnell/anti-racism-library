@@ -4,8 +4,8 @@
 /*color scheme */
 $dark: black;
 $light: white;
-$background-dark: rgb(218, 41, 28); /* grinnell-red */
-$background-light: rgb(255,236,236);
+$background-dark: rgb(167, 0, 0); /* grinnell-red */
+$background-light: rgb(159, 159, 168);
 
 
 .btn-primary {
@@ -86,8 +86,6 @@ caption {
         float: left;
         clear: both;
 }*/
-
-}
 .footer {
   position: fixed;
   bottom: 0;
@@ -96,7 +94,7 @@ caption {
   width: 100%;
   height: 60px; /* Set the fixed height of the footer here */
   line-height: 60px; /* Vertically center the text there */
-  background-color: $grinnell-red;
+  background-color: $background-dark;
   color: black;
   text-align: center;
 }
