@@ -6,7 +6,12 @@ class ItemsController < ApplicationController
                                               #should be the only user that is able to add/edit/delete items in the database
   
   def index                                   #shows all library items in database
-    @items = Item.all
+    @items = self.search
+    if @items.nil?
+      @items = Item.all
+    else
+      @items
+    end
   end
 
   def show                                    #finds an individual item by their id
@@ -46,11 +51,24 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
- 
+  
+  def search                                  #function that find items matching the search phase.
+    if  params[:search].blank?
+      @items = nil
+    else
+      # get item by that is related to search phrase
+      search_phrase = params[:search].downcase
+      item_by_author = Item.all.where("lower(author) LIKE :search", search: search_phrase)  
+      item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase)  
+      item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase)  
+      
+      # Union the search result
+      @items = item_by_title | item_by_author | item_by_description
+    end
+  end
  
   private
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
     params.require(:item).permit(:title, :author, :description, :category, :url)
   end
-  
 end
