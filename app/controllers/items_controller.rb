@@ -7,9 +7,11 @@ class ItemsController < ApplicationController
   
   def index                                   #shows all library items in database
     @items = self.search
+    @page_title = "All library resources"
     if @items.nil?
       @items = Item.all
     else
+      @page_title = "Results for \"#{params[:search]}\":"
       @items
     end
   end
