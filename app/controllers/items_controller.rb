@@ -5,15 +5,23 @@ class ItemsController < ApplicationController
   #before_action :current_user.admin?         #WIP must verify that the user is an admin in order for to run any procudure in this controller. An admin
                                               #should be the only user that is able to add/edit/delete items in the database
   
-  def index                                   #shows all library items in database
-    @items = self.search
+  def index                                   #items in library
+    @items = search
     @page_title = "All library resources"
+    
     if @items.nil?
+      # case when we don't use search, just list all
       @items = Item.all
+      
+    elsif @items.empty?
+      # case when there is no result
+      @page_title = "Sorry! We cannot find any resources for \"#{params[:search]}\":"
+      
     else
+      # case when we found the result
       @page_title = "Results for \"#{params[:search]}\":"
-      @items
     end
+  
   end
 
   def show                                    #finds an individual item by their id
@@ -53,6 +61,8 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
+ 
+  private
   
   def search                                  #function that find items matching the search phase.
     if  params[:search].blank?
@@ -68,8 +78,7 @@ class ItemsController < ApplicationController
       @items = item_by_title | item_by_author | item_by_description
     end
   end
- 
-  private
+  
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
     params.require(:item).permit(:title, :author, :description, :category, :url)
   end
