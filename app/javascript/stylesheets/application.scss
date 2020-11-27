@@ -50,7 +50,10 @@ $background-light: rgb(255,236,236);
 .navbar {
         margin-bottom: 20px;
         background: $dark ;
-} 
+        font-size: 16px !important;
+}
+
+
 
 .row{
         margin-top: 40px;
@@ -58,8 +61,8 @@ $background-light: rgb(255,236,236);
 
 body {
        background: $background-light;
-        color: $dark;
-        font-family: 'Merriweather', sans-serif;
+       color: $dark;
+       font-family: 'Merriweather', sans-serif;
 }
 h1,
 h2 {      
@@ -86,6 +89,7 @@ caption {
         float: left;
         clear: both;
 }*/
+
 
 .footer {
   position: fixed;
