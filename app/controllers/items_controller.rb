@@ -6,7 +6,17 @@ class ItemsController < ApplicationController
                                               #should be the only user that is able to add/edit/delete items in the database
   
   def index                                   #shows all library items in database
-    @items = Item.all
+    # find approved items
+    @items = find_approved
+    if @items.nil?
+      @items = []
+    end
+    
+    # find pending items
+    @pendings = find_pending
+    if @pendings.nil?
+      @pendings = []
+    end
   end
 
   def show                                    #finds an individual item by their id
@@ -33,22 +43,50 @@ class ItemsController < ApplicationController
   end 
 
   def update                                   #function that handles updating library items. 
-   @item = Item.find(params[:id])
-   if @item.update(item_params)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       redirect_to @item
-   else
+    else
       render 'edit'
-   end
+    end
   end
  
   def destroy                                 #function that handles destruction of library items. 
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to 'items'
   end
  
  
+  # Modifying status
+  def deny
+     @item = Item.find(params[:id])
+     @item.update_attribute(:status, Item::DENIED)
+     
+     redirect_to :action => 'index'
+  end
+  
+  def approve
+    @item = Item.find(params[:id])
+    @item.update_attribute(:status, Item::APPROVED)
+    
+    redirect_to :action => 'index'
+  end
+  
+  
   private
+  
+  # find all pending items in the database
+  def find_pending
+    Item.where(status: Item::PENDING)
+  end
+  
+  # find all approved items in the database
+  def find_approved
+     Item.where(status: Item::APPROVED)
+  end
+  
+  
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
     params.require(:item).permit(:title, :author, :description, :category, :url)
   end
