@@ -49,11 +49,11 @@ class ItemTest < ActiveSupport::TestCase
     assert_not @item.valid?
   end
   
- # test "url should be present" do 
+  test "url should be present" do 
     # if there is no url, not valid
-#    @item.url = " "
- #   assert_not @item.valid?
- # end 
+    @item.url = " "
+    assert_not @item.valid?
+  end 
   
   test "category should be present and valid" do       ### note that category is stored as a string, but is shown as a drop down menu
     # if there is no category, not valid 
