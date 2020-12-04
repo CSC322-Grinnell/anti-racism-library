@@ -13,11 +13,13 @@ body {
 
 </style>
 </head>
-<form class="form-inline my-2 my-lg-0">
-     <input class="form-control mr-sm-2" type="search" placeholder="Search" size = "60" aria-label="Search">
-      <button class="btn button1" style = "margin-right: 1vw" type="submit">Search</button>
-     </form>
-<h1>All library resources</h1>
+<%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>  
+      <div class="search-input">  
+        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2", :size => "60" %>  
+        <%= button_tag "Search", :class => "btn button1", :name => nil, :style => "margin-right: 1vw" %>  
+      </div>  
+    <% end %>
+<h1> <%= @page_title %></h1>    
 <div class="scroll"> 
  <table>
   <tr>
