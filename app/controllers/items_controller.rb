@@ -6,7 +6,12 @@ class ItemsController < ApplicationController
                                               #should be the only user that is able to add/edit/delete items in the database
   
   def index                                   #shows all library items in database
-    @items = Item.all
+    session[:filter] = params[:filter]
+    if session[:filter] != nil
+      @items = Item.where(category: session[:filter])
+    else
+      @items = Item.all
+    end
   end
 
   def show                                    #finds an individual item by their id
@@ -52,5 +57,6 @@ class ItemsController < ApplicationController
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
     params.require(:item).permit(:title, :author, :description, :category, :url)
   end
+
   
 end
