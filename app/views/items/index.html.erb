@@ -21,13 +21,13 @@ body {
     <% end %>
 <h1> <%= @page_title %></h1>    
 <div class="scroll"> 
- <table>
+ 
   <tr>
     <th colspan="3"></th>
   </tr>
   
   <H3>Pending materials:</H3>
-  
+  <table>
   <% @pendings.each do |item| %>
     <tr>
       <td>  <%= link_to item.title, item %></td>
@@ -50,9 +50,10 @@ body {
       
     </tr>
   <% end %>
+ </table>
  
  <h3>Approved materials</h3>
- 
+ <table>
   <% @items.each do |item| %>
     <tr>
       <td>  <%= link_to item.title, item %></td>

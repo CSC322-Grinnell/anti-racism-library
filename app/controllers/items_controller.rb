@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     if @items.nil?
       # case when we don't use search, just list all
       @items = Item.all
-     
+      @items = @items.where(status: Item::APPROVED)    
     elsif @items.empty?
       # case when there is no result
       @page_title = "Must type exact title \"#{params[:search]}\":"
@@ -22,8 +22,9 @@ class ItemsController < ApplicationController
     else
       # case when we found the result
       @page_title = "Results for \"#{params[:search]}\":"
+     
     end
-   @items = @items.where(status: Item::APPROVED)   
+   
    # find pending items
     @pendings = find_pending
     if @pendings.nil?
