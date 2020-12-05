@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # get items pages
   get 'items/new'
   
+  # search for items
+  get 'items/search' => 'items#index', :as => 'search_page' 
+  
   
   resources :items do
     patch :deny, on: :member
