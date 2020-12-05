@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
       
     elsif @items.empty?
       # case when there is no result
-      @page_title = "Sorry! We cannot find any resources for \"#{params[:search]}\":"
+      @page_title = "Must type exact title \"#{params[:search]}\":"
       
     else
       # case when we found the result
