@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
       @page_title = "All library resources"
     elsif @items.empty?
       # case when there is no result
-      @page_title = "Must type exact title \"#{params[:search]}\":"
+      @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
     else
       # case when we found the result
       @page_title = "Results for \"#{params[:search]}\":"
@@ -97,9 +97,9 @@ class ItemsController < ApplicationController
     else
       # get item by that is related to search phrase
       search_phrase = params[:search].downcase
-      item_by_author = Item.all.where("lower(author) LIKE :search", search: search_phrase)
-      item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase)
-      item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase)
+      item_by_author = Item.all.where("lower(author) LIKE ?", "%#{search_phrase}%")
+      item_by_title = Item.all.where("lower(title) LIKE ?", "%#{search_phrase}%")
+      item_by_description = Item.all.where("lower(description) LIKE ?", "%#{search_phrase}%")
 
       # Union the search result
       @items = item_by_title | item_by_author | item_by_description
