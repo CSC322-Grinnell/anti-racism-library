@@ -5,13 +5,26 @@ class ItemsController < ApplicationController
   #before_action :current_user.admin?         #WIP must verify that the user is an admin in order for to run any procudure in this controller. An admin
                                               #should be the only user that is able to add/edit/delete items in the database
   
-  def index                                   #shows all library items in database
+
+  def index                                   #items in library
     session[:filter] = params[:filter]
-    if session[:filter] != nil
+    session[:search] = params[:search]
+    @items = search
+    @page_title = "All library resources"
+    
+    if @items.nil?
+      # case when we don't use search, just list all
       @items = Item.where(category: session[:filter])
+      
+    elsif @items.empty?
+      # case when there is no result
+      @page_title = "Must type exact title \"#{params[:search]}\":"
+      
     else
-      @items = Item.all
+      # case when we found the result
+      @page_title = "Results for \"#{params[:search]}\":"
     end
+  
   end
 
   def show                                    #finds an individual item by their id
@@ -52,11 +65,31 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
  
- 
   private
+  
+  def search                                  #function that find items matching the search phase.
+    
+      
+    if  session[:search].blank?
+      @items = nil
+    else
+      # get item by that is related to search phrase
+      search_phrase = session[:search].downcase
+      if session[:filter] != nil
+        item_by_author = Item.all.where("lower(author) LIKE :search", search: search_phrase, category: session[:filter])  
+        item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase, category: session[:filter])  
+        item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase, category: session[:filter])
+      else
+        item_by_author = Item.all.where("lower(author) LIKE :search", search: search_phrase)  
+        item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase)  
+        item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase)
+      end
+      # Union the search result
+      @items = item_by_title | item_by_author | item_by_description
+    end
+  end
+  
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
     params.require(:item).permit(:title, :author, :description, :category, :url)
   end
-
-  
 end
