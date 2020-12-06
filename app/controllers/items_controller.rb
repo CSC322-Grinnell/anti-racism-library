@@ -8,26 +8,24 @@ class ItemsController < ApplicationController
 
   def index                                   #items in library
     @items = search
-    @page_title = "All library resources"
-    
-    if @items.nil?
-      # case when we don't use search, just list all
-      @items = Item.all
-      
+
+    if params[:search].blank?
+      @page_title = "All library resources"
     elsif @items.empty?
       # case when there is no result
       @page_title = "Must type exact title \"#{params[:search]}\":"
-      
     else
       # case when we found the result
       @page_title = "Results for \"#{params[:search]}\":"
     end
 
-    # find pending items
-    @pendings = find_pending
-    if @pendings.nil?
-      @pendings = []
+    @pendings, @approveds = [], []
+
+    @items.each do |item|
+      @pendings << item if item.status == Item::PENDING
+      @approveds << item if item.status == Item::APPROVED
     end
+
   end
 
   def show                                    #finds an individual item by their id
@@ -95,7 +93,7 @@ class ItemsController < ApplicationController
 
   def search                                  #function that find items matching the search phase.
     if  params[:search].blank?
-      @items = nil
+      @items = Item.all
     else
       # get item by that is related to search phrase
       search_phrase = params[:search].downcase
