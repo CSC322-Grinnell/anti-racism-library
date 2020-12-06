@@ -47,17 +47,19 @@
  
 
   <% @items.each do |item| %>
-      <tr>
-        <td>  <%= link_to item.title, item %></td>
-        
-        <td> <div class="horizontalgap" style="width:200px"></div> </td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        
-       <td> <div class="horizontalgap" style="width:10px"></div> </td>
-        <td><%= link_to 'Destroy', item_path(item),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+    <tr>
+      <td>  <%= link_to item.title, item %></td>
+      
+      <td> <div class="horizontalgap" style="width:200px"></div> </td>
+      <td><%= link_to 'Edit', edit_item_path(item) %></td>
+      
+     <td> <div class="horizontalgap" style="width:10px"></div> </td>
+      <td><%= link_to 'Destroy', item_path(item),
+              method: :destroy,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+
   <% end %>
 </table>
 </div>
