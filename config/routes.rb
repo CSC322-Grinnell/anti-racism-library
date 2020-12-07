@@ -17,14 +17,7 @@ Rails.application.routes.draw do
   get 'items/search' => 'items#index', :as => 'search_page' 
   
   
-  resources :items do
-    patch :deny, on: :member
-    patch :approve, on: :member
-  end
-  
-  get 'items/:id/deny', to: 'items#deny'
-  get 'items/:id/approve', to: 'items#approve'
-  
+  resources :items
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   root :to => "non_library_pages#about_us"
