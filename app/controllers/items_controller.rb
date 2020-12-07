@@ -7,24 +7,30 @@ class ItemsController < ApplicationController
   
 
   def index                                   #items in library
-    session[:filter] = params[:filter]
-    session[:search] = params[:search]
+    if not params[:filter].nil? and params[:filter]!=""
+      session[:filter] = params[:filter]
+    end
+    if not params[:search].nil?
+      session[:search] = params[:search]
+    end
+    if not session[:search]
+      session[:search]=nil
+    end
     @items = search
-    @page_title = "All library resources"
     
-    if @items.nil?
-      # case when we don't use search, just list all
-      @items = Item.where(category: session[:filter])
-      
-    elsif @items.empty?
+    
+    
+    if @items.empty?
       # case when there is no result
       @page_title = "Must type exact title \"#{params[:search]}\":"
       
+    elsif session[:search].nil? or session[:search]===""
+      @page_title = "All library resources"
     else
       # case when we found the result
-      @page_title = "Results for \"#{params[:search]}\":"
+      @page_title = "Results for \"#{session[:search]}\":"
     end
-  
+    filter
   end
 
   def show                                    #finds an individual item by their id
@@ -71,21 +77,25 @@ class ItemsController < ApplicationController
     
       
     if  session[:search].blank?
-      @items = nil
+      @items = Item.all
     else
+      
+      
       # get item by that is related to search phrase
       search_phrase = session[:search].downcase
-      if session[:filter] != nil
-        item_by_author = Item.all.where("lower(author) LIKE :search", search: search_phrase, category: session[:filter])  
-        item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase, category: session[:filter])  
-        item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase, category: session[:filter])
-      else
-        item_by_author = Item.all.where("lower(author) LIKE :search", search: search_phrase)  
-        item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase)  
-        item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase)
-      end
+      #item_by_author = 
+      @items = Item.all.where("lower(author) LIKE :search or lower(title) LIKE :search or lower(description) LIKE :search", search: search_phrase)  
+      #item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase)  
+      #item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase)
+      
       # Union the search result
-      @items = item_by_title | item_by_author | item_by_description
+      #@items = item_by_title | item_by_author | item_by_description
+    end
+  end
+  
+  def filter
+    if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]==" "
+      @items = @items.where(category: session[:filter])
     end
   end
   
