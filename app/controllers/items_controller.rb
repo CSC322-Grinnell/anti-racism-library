@@ -81,15 +81,6 @@ class ItemsController < ApplicationController
   end
 
   private
-  # find all pending items in the database
-  def find_pending
-    Item.where(status: Item::PENDING)
-  end
-  
-  # find all approved items in the database
-  def find_approved
-     Item.where(status: Item::APPROVED)
-  end
 
   def search                                  #function that find items matching the search phase.
     if  params[:search].blank?
