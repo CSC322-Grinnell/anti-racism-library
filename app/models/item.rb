@@ -4,8 +4,8 @@ class Item < ApplicationRecord
     PENDING = 0.freeze
     APPROVED = 1.freeze
     DENIED = -1.freeze
-    
-    
+
+
     validates :title, presence: true, length: { maximum: 50 }               #title of the item
     validates :author, presence: true, length: { maximum: 50 }              #author of the item
     validates :description, presence: true, length: { maximum: 1000 }       #description of the item

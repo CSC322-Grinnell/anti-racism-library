@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   #This controller's function is for the items that are stored in the library database. It has operations that create, delete,
   #and edit the items
-  
+
   #before_action :current_user.admin?         #WIP must verify that the user is an admin in order for to run any procudure in this controller. An admin
-                                              #should be the only user that is able to add/edit/delete items in the database
-  
+  #should be the only user that is able to add/edit/delete items in the database
+
 
   def index                                   #items in library
     @items = search
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
   def show                                    #finds an individual item by their id
     @item = Item.find(params[:id])
   end
-  
+
   def new                                     #creates new library item
     @item = Item.new
   end
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
   def edit                                    #edit library items
     @item = Item.find(params[:id])
   end
-    
+
   def create                                  #function meant to handle the creation of a new library item in the database
     @item = Item.new(item_params)
     if @item.save
@@ -48,9 +48,9 @@ class ItemsController < ApplicationController
     else
       render 'new'
     end
-  end 
+  end
 
-  def update                                   #function that handles updating library items. 
+  def update                                   #function that handles updating library items.
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to @item
@@ -58,25 +58,25 @@ class ItemsController < ApplicationController
       render 'edit'
     end
   end
- 
-  def destroy                                 #function that handles destruction of library items. 
+
+  def destroy                                 #function that handles destruction of library items.
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to 'items'
   end
- 
+
   # Modifying status
   def deny
-     @item = Item.find(params[:id])
-     @item.update_attribute(:status, Item::DENIED)
-     
-     redirect_to :action => 'index'
+    @item = Item.find(params[:id])
+    @item.update_attribute(:status, Item::DENIED)
+
+    redirect_to :action => 'index'
   end
-  
+
   def approve
     @item = Item.find(params[:id])
     @item.update_attribute(:status, Item::APPROVED)
-    
+
     redirect_to :action => 'index'
   end
 
