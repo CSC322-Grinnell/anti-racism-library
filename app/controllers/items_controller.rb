@@ -31,11 +31,9 @@ class ItemsController < ApplicationController
       @page_title = "Results for \"#{session[:search]}\":"
     end
 
-    @pendings, @approveds = [], []
 
-    @items.each do |item|
-      @pendings << item if item.status == Item::PENDING
-      @approveds << item if item.status == Item::APPROVED
+     @pendings = @items.where(status: Item::PENDING)
+     @approveds @items.where(status: Item::APPROVED)
     end
     filter
   end
