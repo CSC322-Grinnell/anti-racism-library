@@ -32,8 +32,8 @@ class ItemsController < ApplicationController
     end
 
 
-     @pendings = @items.where(status: Item::PENDING)
-     @approveds @items.where(status: Item::APPROVED)
+     @pendings = @items.where(status: 0)
+     @approveds @items.where(status: 1)
     end
     filter
   end
