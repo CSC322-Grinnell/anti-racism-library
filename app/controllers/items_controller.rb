@@ -7,10 +7,10 @@ class ItemsController < ApplicationController
   
 
   def index                                   #items in library
-    if not params[:filter].nil? and params[:filter]!=""
+    if params[:filter].present?
       session[:filter] = params[:filter]
     end
-    if not params[:search].nil?
+    if params[:search]
       session[:search] = params[:search]
     end
     if not session[:search]
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
       # case when there is no result
       @page_title = "Must type exact title \"#{params[:search]}\":"
       
-    elsif session[:search].nil? or session[:search]===""
+    elsif session[:search].nil? or session[:search]==""
       @page_title = "All library resources"
     else
       # case when we found the result
@@ -83,13 +83,7 @@ class ItemsController < ApplicationController
       
       # get item by that is related to search phrase
       search_phrase = session[:search].downcase
-      #item_by_author = 
       @items = Item.all.where("lower(author) LIKE :search or lower(title) LIKE :search or lower(description) LIKE :search", search: search_phrase)  
-      #item_by_title = Item.all.where("lower(title) LIKE :search", search: search_phrase)  
-      #item_by_description = Item.all.where("lower(description) LIKE :search", search: search_phrase)
-      
-      # Union the search result
-      #@items = item_by_title | item_by_author | item_by_description
     end
   end
   
