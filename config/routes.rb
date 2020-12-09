@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/contact_us', to: 'non_library_pages#contact_us'
   get '/suggest_a_resource', to: 'non_library_pages#suggest_resource'
   get '/about_us', to: 'non_library_pages#about_us'
+  get '/report', to: 'non_library_pages#report'
 
   # get items pages
   get 'items/new'
