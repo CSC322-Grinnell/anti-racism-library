@@ -1,29 +1,84 @@
-<% provide(:title, 'All resources') %> 
-<h1>All library resources</h1>
-<div class="scroll"> 
- <table>
+<% provide(:title, 'All resources') %>
+<head>
+  <style>
+
+
+      .button1 {
+          background-color: #e7e7e7;
+          color: black;
+      }
+
+      /* Gray */
+
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 0;
+      }
+
+
+  </style>
+</head>
+<%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
+  <div class="search-input">
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2", :size => "60" %>
+    <%= button_tag "Search", :class => "btn button1", :name => nil, :style => "margin-right: 1vw" %>
+  </div>
+<% end %>
+<h1> <%= @page_title %></h1>
+<div class="scroll">
+
   <tr>
     <th colspan="3"></th>
   </tr>
- 
-  <% @items.each do |item| %>
-    <tr>
-      <td>  <%= link_to item.title, item %></td>
-      
-      <td> <div class="horizontalgap" style="width:200px"></div> </td>
-      <td><%= link_to 'Edit', edit_item_path(item) %></td>
-      
-     <td> <div class="horizontalgap" style="width:10px"></div> </td>
-      <td><%= link_to 'Destroy', item_path(item),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+
+  <H3>Pending materials:</H3>
+  <table>
+    <% @pendings.each do |item| %>
+      <tr>
+        <td>  <%= link_to item.title, item %></td>
+
+        <td>
+          <div class="horizontalgap" style="width:200px"></div>
+        </td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+
+
+        <td>
+          <div class="horizontalgap" style="width:10px"></div>
+        </td>
+        <td><%= link_to 'Deny', deny_item_path(item.id),
+                        method: :patch,
+                        data: { confirm: 'Are you sure to deny this material?' } %>
+        </td>
+
+        <td>
+          <div class="horizontalgap" style="width:10px"></div>
+        </td>
+        <td><%= link_to 'Approve', approve_item_path(item.id),
+                        method: :patch,
+                        data: { confirm: 'Are you sure to approve this material?' } %>
+        </td>
+
+      </tr>
+    <% end %>
+  </table>
+
+  <h3>Approved materials</h3>
+  <table>
+    <% @approveds.each do |item| %>
+      <tr>
+        <td>  <%= link_to item.title, item %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <style>
-    div.scroll{width: 100; height: auto; overflow: scroll; scrollbar-color: black}
- 
-</style>
+    div.scroll {
+        width: 100;
+        height: auto;
+        overflow: scroll;
+        scrollbar-color: black
+    }
 
+</style>

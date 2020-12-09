@@ -1,4 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
 /*color scheme */
@@ -10,7 +10,7 @@ $background-light: rgb(159, 159, 168);
 
 .btn-primary {
         color: $dark;
-        border-color: $light;
+        border-color: $dark;
         margin-bottom: 5px;
 }
 
@@ -50,7 +50,10 @@ $background-light: rgb(159, 159, 168);
 .navbar {
         margin-bottom: 20px;
         background: $dark ;
-} 
+        font-size: 16px !important;
+}
+
+
 
 .row{
         margin-top: 40px;
@@ -58,8 +61,8 @@ $background-light: rgb(159, 159, 168);
 
 body {
        background: $background-light;
-        color: $dark;
-        font-family: 'Merriweather', sans-serif;
+       color: $dark;
+       font-family: 'Merriweather', sans-serif;
 }
 h1,
 h2 {      
@@ -86,6 +89,7 @@ caption {
         float: left;
         clear: both;
 }*/
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -104,3 +108,4 @@ h5{
 .row{
         margin-top: 40px;
 }
+
