@@ -61,14 +61,17 @@ body {
         color: $dark;
         font-family: 'Merriweather', sans-serif;
 }
-h1,
-h2 {      
-        margin-top: 40px;
-        font-weight: bold;
+
+h1, h2 {      
+        padding-top: 40px;
+        padding-bottom: 10px;
+        text-align:center
 }
+
 h5{
       font-weight: bold;  
 }
+
 p {
         font-size: 16px;
 }
