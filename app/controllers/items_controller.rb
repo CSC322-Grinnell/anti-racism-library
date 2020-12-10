@@ -9,20 +9,20 @@ class ItemsController < ApplicationController
   def index                                   #items in library
     @items = search
 
+    @approveds = []
+
+    @items.each do |item|
+      @approveds << item if item.status == Item::APPROVED
+    end
+
     if params[:search].blank?
       @page_title = "All library resources"
-    elsif @items.empty?
+    elsif @approveds.empty?
       # case when there is no result
       @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
     else
       # case when we found the result
       @page_title = "Results for \"#{params[:search]}\":"
-    end
-
-    @approveds = []
-
-    @items.each do |item|
-      @approveds << item if item.status == Item::APPROVED
     end
 
   end
@@ -30,21 +30,21 @@ class ItemsController < ApplicationController
   def admin_index                             #denied and pending items in library
     @items = search
 
-    if params[:search].blank?
-      @page_title = "All library resources"
-    elsif @items.empty?
-      # case when there is no result
-      @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
-    else
-      # case when we found the result
-      @page_title = "Results for \"#{params[:search]}\":"
-    end
-
     @pendings, @denieds = [], []
 
     @items.each do |item|
       @pendings << item if item.status == Item::PENDING
       @denieds << item if item.status == Item::DENIED
+    end
+
+    if params[:search].blank?
+      @page_title = "All library resources"
+    elsif @pendings.empty? && @denieds.empty?
+      # case when there is no result
+      @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
+    else
+      # case when we found the result
+      @page_title = "Results for \"#{params[:search]}\":"
     end
   end
 
