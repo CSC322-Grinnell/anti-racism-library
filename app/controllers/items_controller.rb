@@ -19,14 +19,35 @@ class ItemsController < ApplicationController
       @page_title = "Results for \"#{params[:search]}\":"
     end
 
-    @pendings, @approveds = [], []
+    @approveds = []
 
     @items.each do |item|
-      @pendings << item if item.status == Item::PENDING
       @approveds << item if item.status == Item::APPROVED
     end
 
   end
+
+  def admin_index                             #denied and pending items in library
+    @items = search
+
+    if params[:search].blank?
+      @page_title = "All library resources"
+    elsif @items.empty?
+      # case when there is no result
+      @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
+    else
+      # case when we found the result
+      @page_title = "Results for \"#{params[:search]}\":"
+    end
+
+    @pendings, @denieds = [], []
+
+    @items.each do |item|
+      @pendings << item if item.status == Item::PENDING
+      @denieds << item if item.status == Item::DENIED
+    end
+  end
+
 
   def show                                    #finds an individual item by their id
     @item = Item.find(params[:id])
@@ -70,14 +91,21 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update_attribute(:status, Item::DENIED)
 
-    redirect_to :action => 'index'
+    redirect_to :action => 'admin_index'
   end
 
   def approve
     @item = Item.find(params[:id])
     @item.update_attribute(:status, Item::APPROVED)
 
-    redirect_to :action => 'index'
+    redirect_to :action => 'admin_index'
+  end
+
+  def pending
+    @item = Item.find(params[:id])
+    @item.update_attribute(:status, Item::PENDING)
+
+    redirect_to :action => 'admin_index'
   end
 
   private
