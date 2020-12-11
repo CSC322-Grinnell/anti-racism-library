@@ -7,6 +7,9 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :description
 
       t.timestamps
+      
+      # an item can have multiple reports
+      t.has_many :reports
     end
   end
 end
