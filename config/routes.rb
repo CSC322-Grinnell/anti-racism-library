@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   get '/contact_us', to: 'non_library_pages#contact_us'
   get '/suggest_a_resource', to: 'non_library_pages#suggest_resource'
   get '/about_us', to: 'non_library_pages#about_us'
-  get '/report', to: 'non_library_pages#report'
+
 
   # get items pages
   get 'items/new'
+  
+  # get reports pages
+  get 'reports/new' => 'reports#new', :as => 'report_new'
 
   # search for items
   get 'items/search' => 'items#index', :as => 'search_page'
@@ -27,6 +30,13 @@ Rails.application.routes.draw do
     patch :approve, on: :member
     patch :pending, on: :member
   end
+  
+  resources :reports do
+
+  end
+  
+
+  
 
   get 'items/:id/deny', to: 'items#deny'
   get 'items/:id/approve', to: 'items#approve'

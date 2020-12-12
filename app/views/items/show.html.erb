@@ -39,5 +39,9 @@
 
 
 <div class="row">
-  <%= link_to "Report This Resource", report_path, class: "btn btn-danger" %>
+  <%= link_to "Report This Resource", report_new_path(item_id: @item.id), class: "btn btn-danger" %>
 </div>
+
+<!--<div class="row">-->
+<!--  <%= link_to "Report This Resource", report_new_path, class: "btn btn-danger" %>-->
+<!--</div>-->
