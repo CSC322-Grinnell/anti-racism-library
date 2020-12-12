@@ -1,11 +1,3 @@
-<header>
-    <style>
-        body {
-          font-family: Arial, Helvetica, sans-serif;
-          margin: 0;
-        }
-    </style>
-</header>
 <h1>Add a resource to the library</h1>
 <div>
     <%= form_with(model: @item, local: true) do |f| %> 
@@ -26,7 +18,9 @@
         <%= f.label :category %>
         <%= f.select :category, ["Book", "Podcast", "Video", "Journal", "Other"], {}, {class: 'form-control'}  %>
         
-        <%= f.submit "Add resource to the library", class: "btn btn-dark" %>
+        <br>
+        
+        <%= f.submit "Add resource to the library", class: "btn btn-success" %>
     <% end %>
 </div>
 
