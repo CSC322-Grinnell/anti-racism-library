@@ -16,10 +16,15 @@ Rails.application.routes.draw do
   # search for items
   get 'items/search' => 'items#index', :as => 'search_page'
 
+  # route to admin page and admin search page (similar to normal index page)
+  get 'items/admin_page' => 'items#admin_index', :as => 'admin'
+  get 'items/admin_search' => 'items#admin_index', :as => 'admin_search_page'
+
 
   resources :items do
     patch :deny, on: :member
     patch :approve, on: :member
+    patch :pending, on: :member
   end
 
   get 'items/:id/deny', to: 'items#deny'
