@@ -4,42 +4,11 @@
 <%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
   <div class="search-input">
     <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control form-control-lg mr-sm-2", :size => "80" %>
-    <%= button_tag "Search", :class => "btn btn-lg btn-danger", :name => nil, :style => "margin-right: 1vw" %>
+    <%= button_tag "Search", :class => "btn btn-lg btn-outline-secondary", :name => nil, :style => "margin-right: 1vw" %>
   </div>
 <% end %>
-<<<<<<< HEAD
   
 <div>
-  <table>
-    <thead>
-      <h3>Pending materials</h3>
-    </thead>
-    <tbody>
-      <% @pendings.each do |item| %>
-        <tr>
-          <td style="width:100%;">
-            <%= link_to item.title, item %>
-          </td>
-          <td>
-            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
-          </td>
-          <td>
-            <%= link_to 'Deny', deny_item_path(item.id),
-                          method: :patch,
-                          data: { confirm: 'Are you sure to deny this material?' }, 
-                          class: "btn btn-danger" %>
-          </td>
-          <td>
-            <%= link_to 'Approve', approve_item_path(item.id),
-                          method: :patch,
-                          data: { confirm: 'Are you sure to approve this material?' }, 
-                          class: "btn btn-success" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
   <table>
     <thead>
       <h3>Approved materials</h3>
