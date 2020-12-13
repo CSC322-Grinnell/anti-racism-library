@@ -16,8 +16,9 @@
         <%= f.label :message %>
         <%= f.text_field :message, class: 'form-control' %>
         
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        
         <br/>
         
         <%= f.submit "Report", class: "btn btn-danger" %>
 <% end %>
-
