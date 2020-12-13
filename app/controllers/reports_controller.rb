@@ -5,18 +5,18 @@ class ReportsController < ApplicationController
   
   def new # create new report 
     
-    @report = Report.new
+    # allows item to be accessed on report page (used for title and author)
     @item = Item.find(params[:item_id])
     
-    return @report, @item
+    # associates item_id with report, automatically adds to schema
+    @report = Report.new(item_id: params[:item_id])
+    
   end
   
   
   
   def create                                  #function meant to handle the creation of a new library item in the database
-    @report, @item = Report.new(report_params)
-    # @item = Item.find(params[:item_id])
-    puts @item.title
+    @report= Report.new(report_params)
     if @report.save
       flash[:success] = "You have created a new report!"
       redirect_to '/'

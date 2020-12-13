@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_195008) do
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_reports_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|

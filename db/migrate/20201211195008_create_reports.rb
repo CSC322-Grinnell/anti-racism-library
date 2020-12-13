@@ -4,15 +4,11 @@ class CreateReports < ActiveRecord::Migration[6.0]
     
       t.string :reason
       t.string :message
-      t.string :item_id
 
       t.timestamps
       
       # a report belongs to an item 
       t.belongs_to :item
-      # a report has item_id to auto populate report form
-      # this line connects databases
-      # t.string :item_id
       
     end
   end
