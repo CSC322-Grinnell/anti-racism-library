@@ -6,6 +6,14 @@ $light: white;
 $background-dark: rgb(218, 41, 28); /* grinnell-red */
 $background-light: rgb(255,236,236);
 
+#page {
+  position: relative;
+  min-height: 97vh;
+}
+
+#page-content {
+  padding-bottom: 100px;
+}
 
 .btn-primary {
         color: $dark;
@@ -52,10 +60,10 @@ body {
 h1, h2 {      
         padding-top: 40px;
         padding-bottom: 10px;
-        text-align:center
+        text-align:center;
 }
 
-h5{
+h5 {
       font-weight: bold;  
 }
 
@@ -76,3 +84,5 @@ p {
   color: $dark;
   text-align: center;
 }
+
+     

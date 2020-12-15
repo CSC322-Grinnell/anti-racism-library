@@ -8,63 +8,118 @@
   </div>
 <% end %>
 
-<table>
-  <thead>
-    <h3>Pending materials</h3>
-  </thead>
-  <tbody>
-    <% @pendings.each do |item| %>
-      <tr>
-        <td style="width:100%;">
-          <%= link_to item.title, item %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
-        </td>
-        <td>
-          <%= link_to 'Deny', deny_item_path(item.id),
-                        method: :patch,
-                        data: { confirm: 'Are you sure to deny this material?' }, 
-                        class: "btn btn-danger" %>
-        </td>
-        <td>
-          <%= link_to 'Approve', approve_item_path(item.id),
-                        method: :patch,
-                        data: { confirm: 'Are you sure to approve this material?' }, 
-                        class: "btn btn-success" %>
-        </td>
-      </tr>
-    <% end %>
+<% if !@reports.empty?%>
+  <h3>Pending reports</h3>
+  <table>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td style="width:100%;">  
+            <%= link_to Item.find(report.item_id).title, report %>
+          </td>
+          <td>
+            <%= link_to 'Review', report,  class: "btn btn-secondary" %>
+          </td>
+          <td><%= link_to 'Resolve', resolve_report_path(report),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to resolve this report?' },
+                          class: "btn btn-success"%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if !@pendings.empty?%>
+  <h3>Pending materials</h3>
+  <table>
+    <tbody>
+      <% @pendings.each do |item| %>
+        <tr>
+          <td style="width:100%;">
+            <%= link_to item.title, item %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
+          </td>
+          <td>
+            <%= link_to 'Deny', deny_item_path(item.id),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to deny this material?' }, 
+                          class: "btn btn-danger" %>
+          </td>
+          <td>
+            <%= link_to 'Approve', approve_item_path(item.id),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to approve this material?' }, 
+                          class: "btn btn-success" %>
+          </td>
+        </tr>
+      <% end %>
   </tbody>
 </table>
+<% end %>
 
-<table>
-  <thead>
-    <h3>Denied materials</h3>
-  </thead>
-  <tbody>
-    <% @denieds.each do |item| %>
-      <tr>
-        <td style="width:100%;">  
-          <%= link_to item.title, item %> 
-        </td>
-        <td> 
-          <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
-        </td>
-        <td>
-          <%= link_to 'Pending', pending_item_path(item.id),
+<% if !@denieds.empty?%>
+  <table>
+    <thead>
+      <h3>Denied materials</h3>
+    </thead>
+    <tbody>
+      <% @denieds.each do |item| %>
+        <tr>
+          <td style="width:100%;">  
+            <%= link_to item.title, item %> 
+          </td>
+          <td> 
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
+          </td>
+          <td>
+            <%= link_to 'Pending', pending_item_path(item.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to set this material to pending?' }, 
+                            class: "btn btn-danger" %>
+          </td>
+          <td>
+            <%= link_to 'Reapprove', approve_item_path(item.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to re-approve this material?' }, 
+                            class: "btn btn-success" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if !@approveds.empty?%>
+  <h3>Approved materials </h3>
+  <table>
+    <tbody>
+      <% @approveds.each do |item| %>
+        <tr>
+          <td style="width:100%;">  
+            <%= link_to item.title, item %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
+          </td>
+          <td>
+            <%= link_to 'Deny', deny_item_path(item.id),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to deny this material?' }, 
+                          class: "btn btn-danger" %>
+          </td>
+          <td>
+            <%= link_to 'Pending', pending_item_path(item.id),
                           method: :patch,
                           data: { confirm: 'Are you sure to set this material to pending?' }, 
-                          class: "btn btn-danger" %>
-        </td>
-        <td>
-          <%= link_to 'Reapprove', approve_item_path(item.id),
-                          method: :patch,
-                          data: { confirm: 'Are you sure to re-approve this material?' }, 
                           class: "btn btn-success" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  

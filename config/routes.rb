@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   get '/suggest_a_resource', to: 'non_library_pages#suggest_resource'
   get '/about_us', to: 'non_library_pages#about_us'
 
+
   # get items pages
   get 'items/new'
+  
+  # get reports pages
+  get 'reports/new' => 'reports#new', :as => 'report_new'
 
   # search for items
   get 'items/search' => 'items#index', :as => 'search_page'
@@ -21,14 +25,20 @@ Rails.application.routes.draw do
   get 'items/admin_search' => 'items#admin_index', :as => 'admin_search_page'
 
 
+  # patches methods for item
   resources :items do
     patch :deny, on: :member
     patch :approve, on: :member
     patch :pending, on: :member
   end
+  
+  # support basic methos for report, such as index, show, edit, create, destroy, update
+  resources :reports do
+    patch :resolve, on: :member
+    patch :deny_item_and_resolve, on: :member
+  end
 
-  get 'items/:id/deny', to: 'items#deny'
-  get 'items/:id/approve', to: 'items#approve'
+  
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
