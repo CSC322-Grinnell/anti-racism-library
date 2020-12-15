@@ -1,33 +1,26 @@
-<% provide(:title, 'All resources') %>
-<head>
-  
-</head>
+<% provide(:title, 'Resources') %>
+<h1> Resources </h1>
+
 <%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
   <div class="search-input">
-    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2", :size => "60" %>
-    <%= button_tag "Search", :class => "btn button1", :name => nil, :style => "margin-right: 1vw" %>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control form-control-lg mr-sm-2", :size => "80" %>
+    <%= button_tag "Search", :class => "btn btn-lg btn-outline-secondary", :name => nil, :style => "margin-right: 1vw" %>
   </div>
 <% end %>
-<h1> <%= @page_title %></h1>
-<div class="scroll">
-  <tr>
-    <th colspan="3"></th>
-  </tr>
+  
+<div>
   <table>
-    <% @approveds.each do |item| %>
-      <tr>
-        <td>  <%= link_to item.title, item %></td>
-      </tr>
-    <% end %>
+    <thead>
+      <h3>Approved materials</h3>
+    </thead>
+    <tbody>
+      <% @approveds.each do |item| %>
+        <tr>
+          <td style="width:100%;">  
+            <%= link_to item.title, item %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
-
-<style>
-    div.scroll {
-        width: 100;
-        height: auto;
-        overflow: scroll;
-        scrollbar-color: black
-    }
-
-</style>

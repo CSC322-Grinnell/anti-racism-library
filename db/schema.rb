@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_195008) do
+ActiveRecord::Schema.define(version: 2020_12_15_075132) do
 
   create_table "items", force: :cascade do |t|
     t.string "author"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_195008) do
     t.string "url"
     t.string "category"
     t.integer "status", default: 0, null: false
+    t.integer "report_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_195008) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "item_id"
+    t.integer "status", default: 0, null: false
     t.index ["item_id"], name: "index_reports_on_item_id"
   end
 

@@ -29,13 +29,16 @@ class ItemsController < ApplicationController
 
   def admin_index                             #denied and pending items in library
     @items = search
-
-    @pendings, @denieds = [], []
+    
+    @pendings, @denieds, @approveds = [], [], []
 
     @items.each do |item|
       @pendings << item if item.status == Item::PENDING
       @denieds << item if item.status == Item::DENIED
+      @approveds << item if item.status == Item::APPROVED
     end
+
+    @reports = Report.where(status: Report::PENDING)
 
     if params[:search].blank?
       @page_title = "All library resources"
@@ -73,17 +76,32 @@ class ItemsController < ApplicationController
 
   def update                                   #function that handles updating library items.
     @item = Item.find(params[:id])
+
     if @item.update(item_params)
-      redirect_to @item
+      flash[:success] = "You have updated the materials!"
+
+      if (item_params[:report_id].nil?)
+        redirect_to @item
+      else
+        # if report is specified, meaning this item is edited from a report form, render report instead
+        report = Report.find(item_params[:report_id])
+        redirect_to report
+      end
     else
-      render 'edit'
+      if (item_params[:report_id].nil?)
+        render 'edit'
+      else
+        # if report is specified, meaning this item is edited from a report form, render report instead
+        report = Report.find(item_params[:report_id])
+        redirect_to report
+      end
     end
   end
 
   def destroy                                 #function that handles destruction of library items.
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to 'items'
+    redirect_to :action => 'admin_index'
   end
 
   # Modifying status
@@ -109,7 +127,6 @@ class ItemsController < ApplicationController
   end
 
   private
-
   def search                                  #function that find items matching the search phase.
     if  params[:search].blank?
       @items = Item.all
@@ -126,6 +143,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
-    params.require(:item).permit(:title, :author, :description, :category, :url)
+    params.require(:item).permit(:title, :author, :description, :category, :url, :report_id)
   end
 end
