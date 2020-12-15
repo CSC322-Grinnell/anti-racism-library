@@ -1,0 +1,24 @@
+<h1 style="text-align:center"> Report </h1>
+<p style="text-align:center"> Something not right about this resource? </br>
+    Let us know here! 
+</p>
+
+<h3>Title: <%= @item.title %></h3>
+<h3>Author(s): <%= @item.author %> </h3>
+
+<%= form_with(model: @report, local: true) do |f| %> 
+
+        <%= f.label :reason %>
+        <%= f.select :reason, ["Inappropriate/offensive", "Misinformation", "Irrelevant Information", "Spelling/Citation Error","General Concern", "General Recommendation", "Other"], {}, {class: 'form-control'}  %>
+        
+        <br/>
+        
+        <%= f.label :message %>
+        <%= f.text_field :message, class: 'form-control' %>
+        
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        
+        <br/>
+        
+        <%= f.submit "Report", class: "btn btn-danger" %>
+<% end %>

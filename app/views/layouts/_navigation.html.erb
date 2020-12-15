@@ -1,40 +1,39 @@
 <nav class="navbar navbar-dark navbar-expand">
   <a class="navbar-brand" href="\#">Grinnell Anti-Racism Library</a>
-   <!--toggle button -->
+  <!--toggle button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
+
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <a class="nav-link" href="/about_us">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/items/new">Add a resource</a>
+        <a class="nav-link" href="/items/new">Suggest a resource</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/items">Resources</a>
       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/suggest_a_resource">Suggest a resource</a>
+      <li class="nav-item">
+        <a class="nav-link" href="/items/admin_page">Admin</a>
       </li>
-       <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="/contact_us">Contact us</a>
       </li>
     </ul>
-     
-    
-     <ul class="navbar-nav mr-right"> 
+
+
+    <ul class="navbar-nav mr-right">
       <% if user_signed_in? %>
         <%= link_to '<button type="button">Logout</button>'.html_safe, destroy_user_session_path, method: :delete %>
         <%= link_to '<button type="button">Edit User</button>'.html_safe, 'users/edit' %>
       <% else %>
         <%= link_to '<button type="button">Log In</button>'.html_safe, new_user_session_path %>
       <% end %>
-      </ul>
+    </ul>
 
   </div>
 </nav>
-

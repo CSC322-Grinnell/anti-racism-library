@@ -18,8 +18,12 @@ class ItemsController < ApplicationController
       session[:search]=nil
     end
     @items = search
-  
-    if @items.empty?
+
+    @approveds = @items.where(status: Item::APPROVED)
+
+    if params[:search].blank?
+      @page_title = "All library resources"
+    elsif @approveds.empty?
       # case when there is no result
       @page_title = "Sorry, we cannot find any results for \"#{session[:search]}\":"
       
@@ -30,13 +34,38 @@ class ItemsController < ApplicationController
       # case when we found the result
       @page_title = "Results for \"#{session[:search]}\":"
     end
-
-
-     @pendings = @items.where(status: 0)
-     @approveds = @items.where(status: 1)
      filter
   end
+
+  def admin_index                             #denied and pending items in library
+    if params[:filter].present?
+      session[:filter] = params[:filter]
+    end
+    if params[:search]
+      session[:search] = params[:search]
+    end
+    if not session[:search]
+      session[:search]=nil
+    end
+    @items = search
+
+    @pendings = @items.where(status: Item::PENDING)
+    @denieds = @items.where(status: Item::DENIED)
+
+    if session[:search].blank?
+      @page_title = "All library resources"
+    elsif @pendings.empty? && @denieds.empty?
+      # case when there is no result
+      @page_title = "Sorry, we cannot find any results for \"#{session[:search]}\":"
+    else
+      # case when we found the result
+      @page_title = "Results for \"#{session[:search]}\":"
+    end
+    
+    admin_filter
+  end
   
+
 
   def show                                    #finds an individual item by their id
     @item = Item.find(params[:id])
@@ -80,14 +109,21 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update_attribute(:status, Item::DENIED)
 
-    redirect_to :action => 'index'
+    redirect_to :action => 'admin_index'
   end
 
   def approve
     @item = Item.find(params[:id])
     @item.update_attribute(:status, Item::APPROVED)
 
-    redirect_to :action => 'index'
+    redirect_to :action => 'admin_index'
+  end
+
+  def pending
+    @item = Item.find(params[:id])
+    @item.update_attribute(:status, Item::PENDING)
+
+    redirect_to :action => 'admin_index'
   end
 
   private
@@ -106,8 +142,15 @@ class ItemsController < ApplicationController
   end
   
   def filter
-    if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]==" "
+    if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]=="All"
       @approveds = @approveds.where(category: session[:filter])
+    end
+  end
+  
+  def admin_filter
+    if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]=="All"
+      @pendings = @pendings.where(category: session[:filter])
+      @denieds = @denieds.where(category: session[:filter])
     end
   end
 

@@ -1,8 +1,6 @@
-
-<% provide(:title, 'All resources') %>
+<% provide(:title, 'Admin resources') %>
 <head>
   <style>
-
       .button1 {
           background-color: #e7e7e7;
           color: black;
@@ -15,17 +13,16 @@
           margin: 0;
       }
 
-
   </style>
 </head>
-<%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
+<%= form_tag(admin_search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
   <div class="search-input">
     <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2", :size => "60" %>
     <%= button_tag "Search", :class => "btn button1", :name => nil, :style => "margin-right: 1vw" %>
   </div>
 <% end %>
 <h1> <%= @page_title %></h1>
-  
+
   <div>
   <h5 style="padding: 0;">Filter By: </h5>
   <form name="filter" style="padding: 0;">
@@ -69,19 +66,76 @@
     </div>
     </form>
 </div>
-  
+
+
+
+
 <div class="scroll">
+
   <tr>
     <th colspan="3"></th>
   </tr>
+
+  <H3>Pending materials:</H3>
   <table>
-    <% @approveds.each do |item| %>
+    <% @pendings.each do |item| %>
       <tr>
         <td>  <%= link_to item.title, item %></td>
+
+        <td>
+          <div class="horizontalgap" style="width:200px"></div>
+        </td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+
+        <td>
+          <div class="horizontalgap" style="width:10px"></div>
+        </td>
+        <td><%= link_to 'Deny', deny_item_path(item.id),
+                        method: :patch,
+                        data: { confirm: 'Are you sure to deny this material?' } %>
+        </td>
+
+        <td>
+          <div class="horizontalgap" style="width:10px"></div>
+        </td>
+        <td><%= link_to 'Approve', approve_item_path(item.id),
+                        method: :patch,
+                        data: { confirm: 'Are you sure to approve this material?' } %>
+        </td>
+
       </tr>
     <% end %>
   </table>
 
+  <h3>Denied materials</h3>
+  <table>
+    <% @denieds.each do |item| %>
+      <tr>
+        <td>  <%= link_to item.title, item %></td>
+
+        <td>
+          <div class="horizontalgap" style="width:200px"></div>
+        </td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+
+        <td>
+          <div class="horizontalgap" style="width:10px"></div>
+        </td>
+        <td><%= link_to 'Pending', pending_item_path(item.id),
+                        method: :patch,
+                        data: { confirm: 'Are you sure to set this material to pending?' } %>
+        </td>
+
+        <td>
+          <div class="horizontalgap" style="width:10px"></div>
+        </td>
+        <td><%= link_to 'Re-approve', approve_item_path(item.id),
+                        method: :patch,
+                        data: { confirm: 'Are you sure to re-approve this material?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <style>
