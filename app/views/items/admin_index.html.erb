@@ -18,12 +18,12 @@
             <%= link_to Item.find(report.item_id).title, report %>
           </td>
           <td>
-            <%= link_to 'Review', report,  class: "btn btn-secondary" %>
+            <%= link_to 'Review', report,  class: "btn btn-custom btn-secondary" %>
           </td>
           <td><%= link_to 'Resolve', resolve_report_path(report),
                           method: :patch,
                           data: { confirm: 'Are you sure to resolve this report?' },
-                          class: "btn btn-success"%>
+                          class: "btn btn-custom btn-success"%>
           </td>
         </tr>
       <% end %>
@@ -41,19 +41,19 @@
             <%= link_to item.title, item %>
           </td>
           <td>
-            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-custom btn-secondary" %>
           </td>
           <td>
             <%= link_to 'Deny', deny_item_path(item.id),
                           method: :patch,
                           data: { confirm: 'Are you sure to deny this material?' }, 
-                          class: "btn btn-danger" %>
+                          class: "btn btn-custom btn-danger" %>
           </td>
           <td>
             <%= link_to 'Approve', approve_item_path(item.id),
                           method: :patch,
                           data: { confirm: 'Are you sure to approve this material?' }, 
-                          class: "btn btn-success" %>
+                          class: "btn btn-custom btn-success" %>
           </td>
         </tr>
       <% end %>
@@ -73,19 +73,19 @@
             <%= link_to item.title, item %> 
           </td>
           <td> 
-            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-custom btn-secondary" %>
           </td>
           <td>
             <%= link_to 'Pending', pending_item_path(item.id),
                             method: :patch,
                             data: { confirm: 'Are you sure to set this material to pending?' }, 
-                            class: "btn btn-danger" %>
+                            class: "btn btn-custom btn-danger" %>
           </td>
           <td>
             <%= link_to 'Reapprove', approve_item_path(item.id),
                             method: :patch,
                             data: { confirm: 'Are you sure to re-approve this material?' }, 
-                            class: "btn btn-success" %>
+                            class: "btn btn-custom btn-success" %>
           </td>
         </tr>
       <% end %>
@@ -103,19 +103,19 @@
             <%= link_to item.title, item %>
           </td>
           <td>
-            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary" %>
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-custom btn-secondary" %>
           </td>
           <td>
             <%= link_to 'Deny', deny_item_path(item.id),
                           method: :patch,
                           data: { confirm: 'Are you sure to deny this material?' }, 
-                          class: "btn btn-danger" %>
+                          class: "btn btn-custom btn-danger" %>
           </td>
           <td>
             <%= link_to 'Pending', pending_item_path(item.id),
                           method: :patch,
                           data: { confirm: 'Are you sure to set this material to pending?' }, 
-                          class: "btn btn-success" %>
+                          class: "btn btn-custom btn-success" %>
           </td>
         </tr>
       <% end %>
