@@ -1,29 +1,13 @@
+<% provide(:title, 'Resources') %>
+<h1> Resources </h1>
 
-<% provide(:title, 'All resources') %>
-<head>
-  <style>
-
-      .button1 {
-          background-color: #e7e7e7;
-          color: black;
-      }
-
-      /* Gray */
-
-      body {
-          font-family: Arial, Helvetica, sans-serif;
-          margin: 0;
-      }
-
-
-  </style>
-</head>
 <%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
   <div class="search-input">
-    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2", :size => "60" %>
-    <%= button_tag "Search", :class => "btn button1", :name => nil, :style => "margin-right: 1vw" %>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control form-control-lg mr-sm-2", :size => "80" %>
+    <%= button_tag "Search", :class => "btn btn-lg btn-outline-secondary", :name => nil, :style => "margin-right: 1vw" %>
   </div>
 <% end %>
+<<<<<<< HEAD
 <h1> <%= @page_title %></h1>
   
   <div>
@@ -74,22 +58,23 @@
   <tr>
     <th colspan="3"></th>
   </tr>
+=======
+  
+<div>
+>>>>>>> quang/report-page
   <table>
-    <% @approveds.each do |item| %>
-      <tr>
-        <td>  <%= link_to item.title, item %></td>
-      </tr>
-    <% end %>
+    <thead>
+      <h3>Approved materials</h3>
+    </thead>
+    <tbody>
+      <% @approveds.each do |item| %>
+        <tr>
+          <td style="width:100%;">  
+            <%= link_to item.title, item %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
 </div>
-
-<style>
-    div.scroll {
-        width: 100;
-        height: auto;
-        overflow: scroll;
-        scrollbar-color: black
-    }
-
-</style>

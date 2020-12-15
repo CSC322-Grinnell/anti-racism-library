@@ -2,49 +2,34 @@
 <html>
   
   <div id="main-layout">
-  <head>
-    
-    <!--Bootstrap reccommends viewport for responsiveness-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=yield :title%></title>
-    
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <header>
-    <%= render 'layouts/navigation' %>
-    </header>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>">
-          <%= message %></div>
-      <% end %>
-    <%= yield %>
-    
-    
+    <head>
+      
+      <!--Bootstrap recommends viewport for responsiveness-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title><%=yield :title%></title>
+      
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
   
-    
-  </body>
-
-  <div id = "footer">
+    <body id="page">
+      <header>
+      <%= render 'layouts/navigation' %>
+      </header>
+      <div class="container" id="page-content">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>">
+            <%= message %></div>
+        <% end %>
+      <%= yield %>
+    </body>
+  
     
     <div class="footer">
-      Grinnell College Anti-Racism Library
+      Grinnell Anti-Racism Library 
     </div>
-    
-    
-  </div>
   
-  <style>
-    .main-layout {
-      min-height: 100%;
-      position: relative;
-      margin-bottom: 11%;
-    }
-  </style>
   </div>
 </html>
