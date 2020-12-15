@@ -1,0 +1,63 @@
+<h2 class="row">The following item needs review for the following reason: </h2>
+<h5 class="row">Reason: <%= @report.reason %></h5>
+<h5 class="row">Reason: <%= @report.message %></h5>
+
+<%= form_with(model: @item, local: true) do |f| %>
+ 
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@item.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+ 
+  <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+        
+        <%= f.label :author %>
+        <%= f.text_field :author, class: 'form-control' %>
+        
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form-control' %>
+        
+        <%= f.label :url, 'Optional URL' %>
+        <%= f.text_field :url, class: 'form-control' %>
+        
+        <%= f.label :category %>
+        <%= f.select :category, ["Book", "Podcast", "Video", "Journal", "Other"], {}, {class: 'form-control'}  %>
+
+        <%= f.hidden_field :report_id, :value => @report.id %>
+ </p> 
+  <p>
+    <%= f.submit "Update Libary Item", class: "btn btn-primary" %>
+ </p>
+
+<table>
+    <tr>
+        <td>
+            <%= link_to "Suspend Item and Resolved Report", deny_item_and_resolve_report_path(@report), 
+                        method: :patch,
+                        data: { confirm: 'Are you sure to suspend this material and resolve this report?' } %>
+        </td>
+
+        <td>
+          <div class="horizontalgap" style="width:10px"></div>
+        </td>
+        <td>
+            <%= link_to "Resolved Report", resolve_report_path(@report), 
+                        method: :patch,
+                        data: { confirm: 'Are you sure to resolve this report?' } %>
+        </td>
+    </tr>
+</table>
+
+<% end %>
