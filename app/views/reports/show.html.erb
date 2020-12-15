@@ -1,6 +1,6 @@
-<h2 class="row">The following item needs review for the following reason: </h2>
-<h5 class="row">Reason: <%= @report.reason %></h5>
-<h5 class="row">Reason: <%= @report.message %></h5>
+<h1>Reported Item </h1>
+<h5>Reason: <%= @report.reason %></h5>
+<h5>Message: <%= @report.message %></h5>
 
 <%= form_with(model: @item, local: true) do |f| %>
  
@@ -17,8 +17,6 @@
       </ul>
     </div>
   <% end %>
-  
-  <p>
  
   <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control' %>
@@ -36,28 +34,19 @@
         <%= f.select :category, ["Book", "Podcast", "Video", "Journal", "Other"], {}, {class: 'form-control'}  %>
 
         <%= f.hidden_field :report_id, :value => @report.id %>
- </p> 
-  <p>
-    <%= f.submit "Update Libary Item", class: "btn btn-primary" %>
- </p>
-
-<table>
-    <tr>
-        <td>
-            <%= link_to "Suspend Item and Resolved Report", deny_item_and_resolve_report_path(@report), 
+        
+        <br/>
+        
+        <%= f.submit "Update Libary Item", class: "btn btn-primary" %>
+ 
+        <%= link_to "Suspend Item and Resolve Report", deny_item_and_resolve_report_path(@report), 
                         method: :patch,
-                        data: { confirm: 'Are you sure to suspend this material and resolve this report?' } %>
-        </td>
-
-        <td>
-          <div class="horizontalgap" style="width:10px"></div>
-        </td>
-        <td>
-            <%= link_to "Resolved Report", resolve_report_path(@report), 
+                        data: { confirm: 'Are you sure you want to suspend this material and resolve this report?' },
+                        class: "btn btn-danger" %>
+                        
+         <%= link_to "Keep Item and Resolve Report", resolve_report_path(@report), 
                         method: :patch,
-                        data: { confirm: 'Are you sure to resolve this report?' } %>
-        </td>
-    </tr>
-</table>
+                        data: { confirm: 'Are you sure you want to keep this item and resolve this report?' },
+                        class: "btn btn-success"  %>
 
 <% end %>
