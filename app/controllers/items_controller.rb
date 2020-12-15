@@ -9,11 +9,7 @@ class ItemsController < ApplicationController
   def index                                   #items in library
     @items = search
 
-    @approveds = []
-
-    @items.each do |item|
-      @approveds << item if item.status == Item::APPROVED
-    end
+    @approveds = @items.where(status: Item::APPROVED)
 
     if params[:search].blank?
       @page_title = "All library resources"
@@ -28,21 +24,19 @@ class ItemsController < ApplicationController
   end
 
   def admin_index                             #denied and pending items in library
+    # get reports
+    @reports = Report.where(status: Report::PENDING)
+
+    # get items
     @items = search
     
-    @pendings, @denieds, @approveds = [], [], []
-
-    @items.each do |item|
-      @pendings << item if item.status == Item::PENDING
-      @denieds << item if item.status == Item::DENIED
-      @approveds << item if item.status == Item::APPROVED
-    end
-
-    @reports = Report.where(status: Report::PENDING)
+    @pendings = @items.where(status: Item::PENDING)
+    @denieds = @items.where(status: Item::DENIED)
+    @approveds = @items.where(status: Item::APPROVED)
 
     if params[:search].blank?
       @page_title = "All library resources"
-    elsif @pendings.empty? && @denieds.empty?
+    elsif @pendings.empty? && @denieds.empty? && @approveds.empty?
       # case when there is no result
       @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
     else
@@ -133,12 +127,9 @@ class ItemsController < ApplicationController
     else
       # get item by that is related to search phrase
       search_phrase = params[:search].downcase
-      item_by_author = Item.all.where("lower(author) LIKE ?", "%#{search_phrase}%")
-      item_by_title = Item.all.where("lower(title) LIKE ?", "%#{search_phrase}%")
-      item_by_description = Item.all.where("lower(description) LIKE ?", "%#{search_phrase}%")
-
-      # Union the search result
-      @items = item_by_title | item_by_author | item_by_description
+      @items = Item.all.where("lower(author) LIKE ?", "%#{search_phrase}%")
+                  .or(Item.all.where("lower(title) LIKE ?", "%#{search_phrase}%"))
+                  .or(Item.all.where("lower(description) LIKE ?", "%#{search_phrase}%"))
     end
   end
 
