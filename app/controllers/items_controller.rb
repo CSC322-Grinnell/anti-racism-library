@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   
     if @items.empty?
       # case when there is no result
-      @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
+      @page_title = "Sorry, we cannot find any results for \"#{session[:search]}\":"
       
     elsif session[:search].nil? or session[:search]==""
       @page_title = "All library resources"
@@ -33,10 +33,10 @@ class ItemsController < ApplicationController
 
 
      @pendings = @items.where(status: 0)
-     @approveds @items.where(status: 1)
-    end
-    filter
+     @approveds = @items.where(status: 1)
+     filter
   end
+  
 
   def show                                    #finds an individual item by their id
     @item = Item.find(params[:id])
