@@ -1,47 +1,42 @@
 
-<h1 class="row"> Title: <%= @item.title %> </h1>
-<h2 class="row"> Author: <%= @item.author %> </h2>
-<h5 class="row"> Description: <%= @item.description %> </h5>
-<h5 class="row"> URL: <%= link_to @item.url, @item.url %></h5>
-<h5 class="row"> Category: <%=  @item.category %></h5>
+<h1> <%= @item.title %> </h1>
+<h3> Author: <%= @item.author %> </h3>
+<h3> Description: <%= @item.description %> </h3>
+<h3> Category: <%=  @item.category %> </h3>
+<%= link_to "Read More", @item.url, class: "btn btn-lg btn-primary" %>
 <div class="container">
-
-<div class="row">
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Suggested resource 1</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-dark">Go somewhere</a>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Suggested resource 1</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-dark">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Suggested resource 2</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-dark">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+     <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Suggested resource 3</h5>
+          <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-dark">Go somewhere</a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Suggested resource 2</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-dark">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-   <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Suggested resource 3</h5>
-        <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-dark">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 
 
 <div class="row">
   <%= link_to "Report This Resource", report_new_path(item_id: @item.id), class: "btn btn-danger" %>
 </div>
-
-<!--<div class="row">-->
-<!--  <%= link_to "Report This Resource", report_new_path, class: "btn btn-danger" %>-->
-<!--</div>-->

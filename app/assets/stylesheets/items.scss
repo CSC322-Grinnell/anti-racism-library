@@ -1,3 +1,24 @@
-// Place all the styles related to the Items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+table {
+  padding-top: 10px;
+  border-collapse: separate;
+}
+
+td {
+  width: 150px;
+  padding-bottom: 10px;
+}
+
+h2 {
+  color: #4287f5;
+}
+
+a {
+  color: #000;
+  font-size: 18px;
+}
+
+.search-input {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
+}
