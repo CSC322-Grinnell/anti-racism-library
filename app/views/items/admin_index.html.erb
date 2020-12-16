@@ -7,6 +7,56 @@
     <%= button_tag "Search", :class => "btn btn-lg btn-outline-secondary", :name => nil, :style => "margin-right: 1vw" %>
   </div>
 <% end %>
+<h1> <%= @page_title %></h1>
+
+  <div>
+  <h5 style="padding: 0;">Filter By: </h5>
+  <form name="filter" style="padding: 0;">
+    <div class="form-inline" style="padding: 0;">
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio0" value="All" onclick="this.form.submit()" <% if session[:filter]=="All" or session[:filter]==nil %>checked<% end%>>
+        <label class="form-check-label">All</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio1" value="Journal" onclick="this.form.submit()" <% if session[:filter]=="Journal" %>checked<% end%>>
+        <label class="form-check-label">Articles</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio2" value="Book" onclick="this.form.submit()" <% if session[:filter]=="Book" %>checked<% end%>>
+        <label class="form-check-label">Books</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio2" value="Audio Book" onclick="this.form.submit()" <% if session[:filter]=="Audio Book" %>checked<% end%>>
+        <label class="form-check-label">Audio Books</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio2" value="Website" onclick="this.form.submit()" <% if session[:filter]=="Website" %>checked<% end%>>
+        <label class="form-check-label">Websites</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio2" value="Podcast" onclick="this.form.submit()" <% if session[:filter]=="Podcast" %>checked<% end%>> 
+        <label class="form-check-label">Podcasts</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio2" value="Essay" onclick="this.form.submit()" <% if session[:filter]=="Essay" %>checked<% end%>>
+        <label class="form-check-label">Essays</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio2" value="Other" onclick="this.form.submit()" <% if session[:filter]=="Other" %>checked<% end%>>
+        <label class="form-check-label">Other</label>
+      </div>
+      <div class="form-check form-check-inline" style="padding-top: 0;">
+        <input class="form-check-input" type="radio" name="filter" id="inlineRadio2" value="On Campus" disabled onclick="this.form.submit()" <% if session[:filter]=="On Campus" %>checked<% end%>>
+        <label class="form-check-label">On Campus</label>
+      </div>
+    </div>
+    </form>
+</div>
+
+
+
+
+<div class="scroll">
 
 <% if !@reports.empty?%>
   <h3>Pending reports</h3>

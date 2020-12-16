@@ -3,53 +3,70 @@ class ItemsController < ApplicationController
   #and edit the items
 
   #before_action :current_user.admin?         #WIP must verify that the user is an admin in order for to run any procudure in this controller. An admin
-  #should be the only user that is able to add/edit/delete items in the database
+
+                                              #should be the only user that is able to add/edit/delete items in the database
 
 
   def index                                   #items in library
+    if params[:filter].present?
+      session[:filter] = params[:filter]
+    end
+    if params[:search]
+      session[:search] = params[:search]
+    end
+    if not session[:search]
+      session[:search]=nil
+    end
     @items = search
 
-    @approveds = []
-
-    @items.each do |item|
-      @approveds << item if item.status == Item::APPROVED
-    end
+    @approveds = @items.where(status: Item::APPROVED)
 
     if params[:search].blank?
       @page_title = "All library resources"
     elsif @approveds.empty?
       # case when there is no result
-      @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
+      @page_title = "Sorry, we cannot find any results for \"#{session[:search]}\":"
+      
+    elsif session[:search].nil? or session[:search]==""
+      @page_title = "All library resources"
+
     else
       # case when we found the result
-      @page_title = "Results for \"#{params[:search]}\":"
+      @page_title = "Results for \"#{session[:search]}\":"
     end
-
+     filter
   end
 
   def admin_index                             #denied and pending items in library
+    if params[:filter].present?
+      session[:filter] = params[:filter]
+    end
+    if params[:search]
+      session[:search] = params[:search]
+    end
+    if not session[:search]
+      session[:search]=nil
+    end
+    @reports = Report.where(status: Report::PENDING)
     @items = search
     
-    @pendings, @denieds, @approveds = [], [], []
+    @pendings = @items.where(status: Item::PENDING)
+    @denieds = @items.where(status: Item::DENIED)
+    @approveds = @items.where(status: Item::APPROVED)
 
-    @items.each do |item|
-      @pendings << item if item.status == Item::PENDING
-      @denieds << item if item.status == Item::DENIED
-      @approveds << item if item.status == Item::APPROVED
-    end
-
-    @reports = Report.where(status: Report::PENDING)
-
-    if params[:search].blank?
+    if session[:search].blank?
       @page_title = "All library resources"
-    elsif @pendings.empty? && @denieds.empty?
+    elsif @pendings.empty? && @denieds.empty? && @approveds.empty?
       # case when there is no result
-      @page_title = "Sorry, we cannot find any results for \"#{params[:search]}\":"
+      @page_title = "Sorry, we cannot find any results for \"#{session[:search]}\":"
     else
       # case when we found the result
-      @page_title = "Results for \"#{params[:search]}\":"
+      @page_title = "Results for \"#{session[:search]}\":"
     end
+    
+    admin_filter
   end
+  
 
 
   def show                                    #finds an individual item by their id
@@ -128,17 +145,30 @@ class ItemsController < ApplicationController
 
   private
   def search                                  #function that find items matching the search phase.
-    if  params[:search].blank?
+    
+    if  session[:search].blank?
       @items = Item.all
     else
+      
+      
       # get item by that is related to search phrase
-      search_phrase = params[:search].downcase
-      item_by_author = Item.all.where("lower(author) LIKE ?", "%#{search_phrase}%")
-      item_by_title = Item.all.where("lower(title) LIKE ?", "%#{search_phrase}%")
-      item_by_description = Item.all.where("lower(description) LIKE ?", "%#{search_phrase}%")
-
-      # Union the search result
-      @items = item_by_title | item_by_author | item_by_description
+      search_phrase = session[:search].downcase
+      @items = Item.all.where("lower(author) LIKE ?", "%#{search_phrase}%")
+                  .or(Item.all.where("lower(title) LIKE ?", "%#{search_phrase}%"))
+                  .or(Item.all.where("lower(description) LIKE ?", "%#{search_phrase}%")) 
+    end
+  end
+  
+  def filter
+    if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]=="All"
+      @approveds = @approveds.where(category: session[:filter])
+    end
+  end
+  
+  def admin_filter
+    if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]=="All"
+      @pendings = @pendings.where(category: session[:filter])
+      @denieds = @denieds.where(category: session[:filter])
     end
   end
 
