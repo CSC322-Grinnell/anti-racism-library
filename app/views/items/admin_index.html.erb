@@ -1,13 +1,13 @@
 <% provide(:title, 'Admin resources') %>
-<h1> Administration </h1>
 
+<h1> <%= @page_title %></h1>
 <%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
   <div class="search-input">
     <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control form-control-lg mr-sm-2", :size => "80" %>
     <%= button_tag "Search", :class => "btn btn-lg btn-outline-secondary", :name => nil, :style => "margin-right: 1vw" %>
   </div>
 <% end %>
-<h1> <%= @page_title %></h1>
+
 
   <div>
   <h5 style="padding: 0;">Filter By: </h5>

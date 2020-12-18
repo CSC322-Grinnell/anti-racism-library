@@ -26,6 +26,32 @@ Item.create(author: "None",
             description: "The role of science in the struggle for Black liberation, and why it's critical for Black voices to shape fields that have excluded them.",
             url: "https://magazine.scienceforthepeople.org/vol23-1/science-feminism-and-black-liberation-an-interview-with-sam-anderson/", 
             category: "Journal")
+Item.create(author: "Assata Shakur", 
+            title: "Assata", 
+            description: "A political autobiography about the justice system and Black activism in the ‘60s and ‘70s. Assata Shakur was a Civil rights activist and member of the Black Liberation Army and Black Panther Party. She was (without sufficient evidence) convicted of murder and later escaped prison to flee the country. ",
+            url: "https://bookshop.org/books/assata-an-autobiography/9781556520747", 
+            category: "Book")
+Item.create(author: "Ta-Nehisi Coates", 
+            title: "Between The World And Me", 
+            description: "In this #1 New York Times bestseller, Coates weaves personal narrative with reportage to explain racism in America—in history and as it exists today.",
+            url: "https://bookshop.org/a/3433/9780812993547", 
+            category: "Book")
+Item.create(author: "Mikki Kendall", 
+            title: "Hood Feminism", 
+            description: "A collection of critical essays that explores the modern-day feminist movement, its blind spots, and its failure to secure equality for all women.",
+            url: "https://bookshop.org/a/3433/9780525560548", 
+            category: "Book")
+Item.create(author: "Austin Channing Brown", 
+            title: "I’m Still Here", 
+            description: "This book is a powerful account of what it’s like growing up as a Black Christian woman in America. Channing Brown addresses some of today’s most pertinent topics—including the intersections of racial justice and religion.",
+            url: "https://bookshop.org/a/3433/9781524760854", 
+            category: "Book")
+Item.create(author: "Layla F. Saad", 
+            title: "Me and White Supremacy", 
+            description: "Saad has gifted the world an unparalleled resource for digging up the deepest and most disguised layers of white supremacy. This book is best experienced as a journey, and the chapters are presented in bite-size lessons so readers can sit with the content, allow for introspection, and engage in essential conversations with friends and family members.",
+            url: "https://bookshop.org/a/3433/9781728209807", 
+            category: "Book")
+
 
 # Seed an admin:
 ##### email: admin@grinnell.edu
@@ -38,4 +64,3 @@ User.create(email: "admin@grinnell.edu", username: "admin", password: "admin_pas
 ##### username: user
 ##### password: userp_assword
 User.create(email: "user@grinnell.edu", username: "user", password: "user_password", admin:false)
-
