@@ -37,3 +37,6 @@ yarn-debug.log*
 
 # Avoiding .idea
 .idea
+
+# heroku folder
+/heroku
