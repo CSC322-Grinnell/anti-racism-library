@@ -1,6 +1,9 @@
 # anti-racism-library
-ARL Team:
+ARL Team 1:
 Milica Cvrkota, Anushka Kulshereshtha, Prajita Niraula, Lanea Rohan, and Rudy Vega
+
+ARL Team 2:
+Adam Mao, Charun Upara, Christa Cochran, Haakon Larsen, Quang Duc, and Tran Le
 
 Client:
 Nicole Eikmeier
@@ -59,14 +62,8 @@ search bar. The resources page will have a list of resources included that will 
 Links
 -----
 
-Link to prototype:
-https://www.figma.com/proto/63UaNaHNfHPjV2CtdIQXbN/Anti-Racism-Library?node-id=23%3A77&scaling=min-zoom
-
-Link to Figma working page:
-https://www.figma.com/file/63UaNaHNfHPjV2CtdIQXbN/Anti-Racism-Library?node-id=0%3A1
-
-Link to Heroku app:
-https://blooming-tundra-07025.herokuapp.com/
+Link to figma mockup:
+https://www.figma.com/file/N1mnW7dft8cuZtPbbdI7rk/Anti-racism-site-mockup
 
 Link to Devise Wiki:
 https://github.com/heartcombo/devise/wiki
