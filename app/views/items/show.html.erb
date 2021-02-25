@@ -37,6 +37,7 @@
   </div>
 </div>
 
+<% if current_user and current_user.admin %>
 <div class="row">
 <% if (@item.status == (Item::PENDING))%>
           <td>
@@ -92,6 +93,7 @@
           </td>
   <% end %>
   </div>
+  <% end %>
 
 
 <div class="row">
