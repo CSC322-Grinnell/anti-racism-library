@@ -11,9 +11,16 @@
       <li class="nav-item ">
         <a class="nav-link" href="/about_us">Home <span class="sr-only">(current)</span></a>
       </li>
+
+
+      <!-- Only display suggest a resource to confirmed users -->
+      <% if (!current_user.nil?) && current_user.confirmed?%>
       <li class="nav-item">
         <a class="nav-link" href="/items/new">Suggest a resource</a>
       </li>
+      <% end %>
+
+
       <li class="nav-item">
         <a class="nav-link" href="/items">Resources</a>
       </li>

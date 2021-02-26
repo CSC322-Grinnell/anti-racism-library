@@ -7,6 +7,7 @@
     </style>
 </header>
 <h1>Add a resource to the library!</h1>
+<h1> hello, the current user is  <%= current_user.username%>. Confirmed is <%= current_user.confirmed?%></h1>
 <h4> This resource will be reviewed and added to the library if suitable. </h4>
 <div>
     <%= form_with(model: @item, local: true) do |f| %> 
