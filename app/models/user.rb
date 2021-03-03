@@ -11,8 +11,8 @@ class User < ApplicationRecord
          :validatable, authentication_keys: [:login]
   attr_writer :login
 
-  VALID_GRINNELL_EMAIL_REGEX = /\A[\w+\-.]+@gmail\.com/i #/\A[\w+\-.]+@grinnell\.edu/i
-  validates_format_of :email, :with => VALID_GRINNELL_EMAIL_REGEX , :message => "domain must be 'grinnell.edu'"
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: {with: EMAIL_REGEX}
   
   def login
 
