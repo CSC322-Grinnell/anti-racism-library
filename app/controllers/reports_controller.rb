@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
     @report= Report.new(report_params)
     if @report.save
       flash[:success] = "You have created a new report!"
-      item = Item.find
+      item = Item.find(report_params[:item_id])
       redirect_to item
     else
       render 'new'
