@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
   def admin_index                             #denied and pending items in library
     if current_user == nil or !current_user.admin
-      redirect_to '/users/not_admin'
+      redirect_to '/items/not_admin'
     end 
     if params[:filter].present?
       session[:filter] = params[:filter]

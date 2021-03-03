@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # get items pages
   get 'items/new'
   
-  get 'users/not_admin', to: 'users#not_admin'
+  get 'items/not_admin', to: 'items#not_admin'
   
   # get reports pages
   get 'reports/new' => 'reports#new', :as => 'report_new'
