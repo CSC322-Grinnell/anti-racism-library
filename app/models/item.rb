@@ -7,10 +7,10 @@ class Item < ApplicationRecord
     DENIED = -1.freeze
 
 
-    validates :title, presence: true, length: { maximum: 1000 }               #title of the item
+    validates :title, presence: true, length: { maximum: 1000 }             #title of the item
     validates :author, presence: true, length: { maximum: 50 }              #author of the item
     validates :description, presence: true, length: { maximum: 1000 }       #description of the item
-    validates :url, presence: true, length: { maximum: 1000 }               #url of the item
+    validates :url, length: { maximum: 1000 }                               #url of the item
     validates :category, presence: true                                     #category of the item
     validates :status, presence: true
 

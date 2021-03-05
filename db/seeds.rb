@@ -51,7 +51,24 @@ Item.create(author: "Layla F. Saad",
             description: "Saad has gifted the world an unparalleled resource for digging up the deepest and most disguised layers of white supremacy. This book is best experienced as a journey, and the chapters are presented in bite-size lessons so readers can sit with the content, allow for introspection, and engage in essential conversations with friends and family members.",
             url: "https://bookshop.org/a/3433/9781728209807", 
             category: "Book")
+            
+#65 add extra resources from resources.csv
+require 'csv'
 
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'resources.csv'))
+
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'UTF-8')
+
+csv.each do |row|
+    i = Item.new
+    i.title = row['title']
+    i.author = row['author']
+    i.description = row['description']
+    i.category = row['category']
+    i.url = row['url']
+    i.save
+    
+end
 
 # Seed an admin:
 ##### email: admin@grinnell.edu

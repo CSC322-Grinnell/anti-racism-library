@@ -17,6 +17,10 @@ gem 'turbolinks',                 '5.2.1'
 gem 'jbuilder',                   '2.10.0'
 gem 'bootsnap',                   '1.4.6', require: false
 gem 'devise'
+gem 'sendgrid-ruby'
+gem 'figaro'
+
+
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
@@ -46,6 +50,7 @@ end
 group :production do
   gem 'pg',         '1.2.3'
   gem 'aws-sdk-s3', '1.46.0', require: false
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
