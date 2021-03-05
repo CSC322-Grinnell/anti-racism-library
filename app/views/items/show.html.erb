@@ -37,6 +37,64 @@
   </div>
 </div>
 
+<% if current_user and current_user.admin %>
+<div class="row">
+<% if (@item.status == (Item::PENDING))%>
+          <td>
+            <%= link_to 'Edit', edit_item_path(@item.id), class: "btn btn-custom btn-secondary" %>
+          </td>
+          <td>
+            <%= link_to 'Deny', deny_item_path(@item.id),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to deny this material?' }, 
+                          class: "btn btn-custom btn-danger" %>
+          </td>
+          <td>
+            <%= link_to 'Approve', approve_item_path(@item.id),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to approve this material?' }, 
+                          class: "btn btn-custom btn-success" %>
+          </td>
+<% end %>
+
+<% if (@item.status == (Item::DENIED))%>
+          <td> 
+            <%= link_to 'Edit', edit_item_path(@item.id), class: "btn btn-custom btn-secondary" %>
+          </td>
+          <td>
+            <%= link_to 'Pending', pending_item_path(@item.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to set this material to pending?' }, 
+                            class: "btn btn-custom btn-danger" %>
+          </td>
+          <td>
+            <%= link_to 'Reapprove', approve_item_path(@item.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to re-approve this material?' }, 
+                            class: "btn btn-custom btn-success" %>
+          </td>
+<% end %>
+
+<% if (@item.status == (Item::APPROVED))%>
+          <td>
+            <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-custom btn-secondary" %>
+          </td>
+          <td>
+            <%= link_to 'Deny', deny_item_path(@item.id),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to deny this material?' }, 
+                          class: "btn btn-custom btn-danger" %>
+          </td>
+          <td>
+            <%= link_to 'Pending', pending_item_path(@item.id),
+                          method: :patch,
+                          data: { confirm: 'Are you sure to set this material to pending?' }, 
+                          class: "btn btn-custom btn-success" %>
+          </td>
+  <% end %>
+  </div>
+  <% end %>
+
 
 <div class="row">
   <%= link_to "Report This Resource", report_new_path(item_id: @item.id), class: "btn btn-danger" %>

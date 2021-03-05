@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   # get items pages
   get 'items/new'
   
+  get 'items/not_admin', to: 'items#not_admin'
+  
   # get reports pages
   get 'reports/new' => 'reports#new', :as => 'report_new'
 
@@ -23,7 +25,6 @@ Rails.application.routes.draw do
   # route to admin page and admin search page (similar to normal index page)
   get 'items/admin_page' => 'items#admin_index', :as => 'admin'
   get 'items/admin_search' => 'items#admin_index', :as => 'admin_search_page'
-
 
   # patches methods for item
   resources :items do

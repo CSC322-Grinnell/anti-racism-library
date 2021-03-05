@@ -38,6 +38,9 @@ class ItemsController < ApplicationController
   end
 
   def admin_index                             #denied and pending items in library
+    if current_user == nil or !current_user.admin
+      redirect_to '/items/not_admin'
+    end 
     if params[:filter].present?
       session[:filter] = params[:filter]
     end
@@ -67,7 +70,8 @@ class ItemsController < ApplicationController
     admin_filter
   end
   
-
+  def not_admin
+  end
 
   def show                                    #finds an individual item by their id
     @item = Item.find(params[:id])
