@@ -1,0 +1,64 @@
+<% provide(:title, 'User console') %>
+
+<h1> <%= @page_title %></h1>
+<%= form_tag(search_page_path, :method => "get", class: 'form-inline my-2 my-lg-0') do %>
+  <div class="search-input">
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control form-control-lg mr-sm-2", :size => "80" %>
+    <%= button_tag "Search", :class => "btn btn-lg btn-outline-secondary", :name => nil, :style => "margin-right: 1vw" %>
+  </div>
+<% end %>
+
+
+<div class="scroll">
+
+
+<% if !@admins.empty?%>
+  <h3>Admins</h3>
+  <table>
+    <tbody>
+      <% @admins.each do |user| %>
+        <tr>
+          <td style="width:50%;"> 
+            <%= user.username %>
+          </td>
+          <td style="width:50%;">  
+            <%= user.email %>
+          </td>
+          <td>
+            <%= link_to 'Demote to user', demote_admin_path(user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to demote this admin to become a regular user?' }, 
+                            class: "btn btn-custom btn-danger" %>
+          </td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if !@users.empty?%>
+  <h3>Users</h3>
+  <table>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td style="width:50%;"> 
+            <%= user.username %>
+          </td>
+          <td style="width:50%;">  
+            <%= user.email %>
+          </td>
+          <td>
+            <%= link_to 'Promote to admin', promote_admin_path(user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to promote this user to become an admin?' }, 
+                            class: "btn btn-custom btn-success" %>
+          </td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+</div>
