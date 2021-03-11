@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/contact_us', to: 'non_library_pages#contact_us'
   get '/suggest_a_resource', to: 'non_library_pages#suggest_resource'
   get '/about_us', to: 'non_library_pages#about_us'
+  get '/user_console', to: 'admin#user_console'
 
 
   # get items pages
@@ -40,6 +41,12 @@ Rails.application.routes.draw do
     patch :resolve, on: :member
     patch :deny_item_and_resolve, on: :member
   end
+
+    # patches methods for user console
+    resources :admin do
+      patch :promote, on: :member
+      patch :demote, on: :member
+    end
 
   
 

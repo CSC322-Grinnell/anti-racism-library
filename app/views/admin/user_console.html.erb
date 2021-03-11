@@ -1,0 +1,57 @@
+<% provide(:title, 'User console') %>
+
+<h1> <%= "User console" %></h1>
+
+<div class="scroll">
+
+
+<% if !@admins.empty?%>
+  <h3>Admins</h3>
+  <table>
+    <tbody>
+      <% @admins.each do |user| %>
+        <tr>
+          <td style="width:50%;"> 
+            <%= user.username %>
+          </td>
+          <td style="width:50%;">  
+            <%= user.email %>
+          </td>
+          <td>
+            <%= link_to 'Demote to user', demote_admin_path(user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to demote this admin to become a regular user?' }, 
+                            class: "btn btn-custom btn-danger" %>
+          </td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if !@users.empty?%>
+  <h3>Users</h3>
+  <table>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td style="width:50%;"> 
+            <%= user.username %>
+          </td>
+          <td style="width:50%;">  
+            <%= user.email %>
+          </td>
+          <td>
+            <%= link_to 'Promote to admin', promote_admin_path(user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to promote this user to become an admin?' }, 
+                            class: "btn btn-custom btn-success" %>
+          </td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+</div>

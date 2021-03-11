@@ -81,3 +81,8 @@ User.create(email: "admin@grinnell.edu", username: "admin", password: "admin_pas
 ##### username: user
 ##### password: userp_assword
 User.create(email: "user@grinnell.edu", username: "user", password: "user_password", admin:false)
+
+# Two additional non-admin users
+User.create(email: "goats@grinnell.edu", username: "goats", password: "goats_password", admin:false)
+
+User.create(email: "articulate@grinnell.edu", username: "articulate", password: "articulate_password", admin:false)
