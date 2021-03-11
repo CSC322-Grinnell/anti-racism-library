@@ -1,12 +1,11 @@
 class AdminController < ApplicationController
-    before_action :check_admin, except: [:index, :show, :search, :filter]   
+    before_action :check_admin  
 
     def check_admin
         if current_user == nil or !current_user.admin
           redirect_to '/items/not_admin'
         end
     end 
-
 
     def user_console
         @everyone = User.all
