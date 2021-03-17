@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   #This controller's function is for the items that are stored in the library database. It has operations that create, delete,
   #and edit the items
 
-  before_action :check_admin, except: [:new, :index, :show, :search, :filter, :not_admin]         #WIP must verify that the user is an admin in order for to run any procudure in this controller. An admin
+  before_action :check_admin, except: [:create, :check_user, :new, :index, :show, :search, :filter, :not_admin]         #WIP must verify that the user is an admin in order for to run any procudure in this controller. An admin
   before_action :check_user, only: [:new]
                                               #should be the only user that is able to add/edit/delete items in the database
 
@@ -178,6 +178,7 @@ class ItemsController < ApplicationController
   
   def admin_filter
     if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]=="All"
+      @approveds = @approveds.where(category: session[:filter])
       @pendings = @pendings.where(category: session[:filter])
       @denieds = @denieds.where(category: session[:filter])
     end

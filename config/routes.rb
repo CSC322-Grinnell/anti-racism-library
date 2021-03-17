@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
     #registrations: 'user/registrations'
   }
+  
+  devise_scope :user do
+  get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   # get pages for semi-static non-resource/user pages
   get '/contact_us', to: 'non_library_pages#contact_us'
@@ -48,8 +52,13 @@ Rails.application.routes.draw do
       patch :demote, on: :member
     end
 
+  get 'items/:id/deny', to: 'items#deny'
+  get 'items/:id/approve', to: 'items#approve'
+  get 'items/:id/pending', to: 'items#pending'
   
-
+  get 'admin/:id/promote', to: 'admin#promote'
+  get 'admin/:id/demote', to: 'admin#demote'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root :to => "non_library_pages#about_us"
