@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   get 'items/:id/approve', to: 'items#approve'
   get 'items/:id/pending', to: 'items#pending'
   
+  get 'admin/:id/promote', to: 'admin#promote'
+  get 'admin/:id/demote', to: 'admin#demote'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root :to => "non_library_pages#about_us"

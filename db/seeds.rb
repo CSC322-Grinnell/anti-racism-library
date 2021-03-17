@@ -1,6 +1,7 @@
 # Seeds for All Resources page (code in app/views/items/index.html.erb)
 
 # Seed items: 
+=begin
 Item.create(author: "Francis Su", 
             title: "Mathematics for Human Flourishing", 
             description: "Su describes his relationship with an inmate, and the inamate's discovery of mathematics while in prison.", 
@@ -51,6 +52,7 @@ Item.create(author: "Layla F. Saad",
             description: "Saad has gifted the world an unparalleled resource for digging up the deepest and most disguised layers of white supremacy. This book is best experienced as a journey, and the chapters are presented in bite-size lessons so readers can sit with the content, allow for introspection, and engage in essential conversations with friends and family members.",
             url: "https://bookshop.org/a/3433/9781728209807", 
             category: "Book")
+=end
             
 #65 add extra resources from resources.csv
 require 'csv'
