@@ -52,8 +52,10 @@ Rails.application.routes.draw do
       patch :demote, on: :member
     end
 
+  get 'items/:id/deny', to: 'items#deny'
+  get 'items/:id/approve', to: 'items#approve'
+  get 'items/:id/pending', to: 'items#pending'
   
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root :to => "non_library_pages#about_us"
