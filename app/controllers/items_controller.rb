@@ -178,6 +178,7 @@ class ItemsController < ApplicationController
   
   def admin_filter
     if session[:filter]!=nil and not session[:filter].blank? and not session[:filter]=="All"
+      @approveds = @approveds.where(category: session[:filter])
       @pendings = @pendings.where(category: session[:filter])
       @denieds = @denieds.where(category: session[:filter])
     end
