@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
     #registrations: 'user/registrations'
   }
+  
+  devise_scope :user do
+  get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   # get pages for semi-static non-resource/user pages
   get '/contact_us', to: 'non_library_pages#contact_us'
