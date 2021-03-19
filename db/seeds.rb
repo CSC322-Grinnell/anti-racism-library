@@ -76,15 +76,23 @@ end
 ##### email: admin@grinnell.edu
 ##### username: admin
 ##### password: admin_password
-User.create(email: "admin@grinnell.edu", username: "admin", password: "admin_password", admin:true)
+admin = User.new(email: "admin@grinnell.edu", username: "admin", password: "admin_password", admin:true)
+admin.skip_confirmation!
+admin.save!
 
 # Seed a non-admin: 
 ##### email: user@grinnell.edu
 ##### username: user
 ##### password: userp_assword
-User.create(email: "user@grinnell.edu", username: "user", password: "user_password", admin:false)
+user = User.new(email: "user@grinnell.edu", username: "user", password: "user_password", admin:false)
+user.skip_confirmation!
+user.save!
 
 # Two additional non-admin users
-User.create(email: "goats@grinnell.edu", username: "goats", password: "goats_password", admin:false)
+goats = User.new(email: "goats@grinnell.edu", username: "goats", password: "goats_password", admin:false)
+goats.skip_confirmation!
+goats.save!
 
-User.create(email: "articulate@grinnell.edu", username: "articulate", password: "articulate_password", admin:false)
+articulate = User.new(email: "articulate@grinnell.edu", username: "articulate", password: "articulate_password", admin:false)
+articulate.skip_confirmation!
+articulate.save!
