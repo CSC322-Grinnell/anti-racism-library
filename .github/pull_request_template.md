@@ -1,4 +1,4 @@
-Note: Please reference the issue ids that this merge request resolves. If your description add "Closes #issue-id" or "Fixes #issue-id", GitLab will close the issues referenced. 
+Note: Please reference the issue ids that this merge request resolves. If your description add "Closes #issue-id" or "Fixes #issue-id", GitHub will close the issues referenced. 
 
 ## Summary:
 Short summary of all the functionalities that you added in this merge request or the bugs that it resolves. 
