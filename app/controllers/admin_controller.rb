@@ -17,6 +17,7 @@ class AdminController < ApplicationController
     def promote
         @user = User.find(params[:id])
         @user.update_attribute(:admin, true)
+        @user.update_attribute(:banned, false)
     
         redirect_to :action => 'user_console'
     end
@@ -24,6 +25,20 @@ class AdminController < ApplicationController
     def demote
         @user = User.find(params[:id])
         @user.update_attribute(:admin, false)
+    
+        redirect_to :action => 'user_console'
+    end
+
+    def ban
+        @user = User.find(params[:id])
+        @user.update_attribute(:banned, true)
+    
+        redirect_to :action => 'user_console'
+    end
+
+    def unban
+        @user = User.find(params[:id])
+        @user.update_attribute(:banned, false)
     
         redirect_to :action => 'user_console'
     end

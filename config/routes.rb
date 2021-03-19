@@ -50,6 +50,8 @@ Rails.application.routes.draw do
     resources :admin do
       patch :promote, on: :member
       patch :demote, on: :member
+      patch :ban, on: :member
+      patch :unban, on: :member
     end
 
   get 'items/:id/deny', to: 'items#deny'
@@ -58,6 +60,9 @@ Rails.application.routes.draw do
   
   get 'admin/:id/promote', to: 'admin#promote'
   get 'admin/:id/demote', to: 'admin#demote'
+
+  get 'admin/:id/ban', to: 'admin#ban'
+  get 'admin/:id/unban', to: 'admin#unban'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

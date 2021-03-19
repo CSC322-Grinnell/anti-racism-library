@@ -14,7 +14,7 @@
 
 
       <!-- Only display suggest a resource to confirmed users -->
-      <% if (!current_user.nil?) && current_user.confirmed?%>
+      <% if (!current_user.nil?) && current_user.confirmed? && (!current_user.banned) %>
       <li class="nav-item">
         <a class="nav-link" href="/items/new">Suggest a resource</a>
       </li>

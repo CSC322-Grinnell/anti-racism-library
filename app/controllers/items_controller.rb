@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   
   
   def check_user
-    if current_user == nil or !current_user.confirmed?
+    if current_user == nil or !current_user.confirmed? or current_user.banned
       redirect_to '/items/not_user'
     end 
   end

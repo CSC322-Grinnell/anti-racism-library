@@ -18,7 +18,7 @@
             <%= user.email %>
           </td>
           <td>
-            <%= link_to 'Demote to user', demote_admin_path(user.id),
+            <%= link_to 'Demote', demote_admin_path(user.id),
                             method: :patch,
                             data: { confirm: 'Are you sure to demote this admin to become a regular user?' }, 
                             class: "btn btn-custom btn-danger" %>
@@ -42,7 +42,20 @@
             <%= user.email %>
           </td>
           <td>
-            <%= link_to 'Promote to admin', promote_admin_path(user.id),
+            <% if(user.banned)%>
+              <%= link_to 'Unban', unban_admin_path(user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to unban this user?' }, 
+                            class: "btn btn-custom btn-success" %>
+            <% else %>
+              <%= link_to 'Ban', ban_admin_path(user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to ban this user?' }, 
+                            class: "btn btn-custom btn-danger" %>
+            <% end %>
+          </td> 
+          <td>
+            <%= link_to 'Promote', promote_admin_path(user.id),
                             method: :patch,
                             data: { confirm: 'Are you sure to promote this user to become an admin?' }, 
                             class: "btn btn-custom btn-success" %>

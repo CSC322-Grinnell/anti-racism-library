@@ -26,4 +26,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.admin?, "regular users should not be admins"
   end
 
+  test "users should not be banned" do
+    assert_not @user.banned, "users should not be banned"
+  end
+
 end
