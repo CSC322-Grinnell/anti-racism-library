@@ -25,20 +25,22 @@
             <%= user.email %>
           </td>
           <td style="text-align:center">  
-            <%= user.items.where(status: Item::PENDING).count() %>
+            <%= user.items.pendings.count %>
           </td>
           <td style="text-align:center">   
-            <%= user.items.where(status: Item::APPROVED).count() %>
+            <%= user.items.approveds.count %>
           </td>
           <td style="text-align:center">  
-            <%= user.items.where(status: Item::DENIED).count() %>
+            <%= user.items.denieds.count %>
           </td>
-          <td>
-            <%= link_to 'Demote', demote_admin_path(user.id),
+          <% if @admins.count > 1 %>
+            <td>
+              <%= link_to 'Demote', demote_admin_path(user.id),
                             method: :patch,
-                            data: { confirm: 'Are you sure to demote this user to become a user?' }, 
+                            data: { confirm: 'Are you sure to demote this admin to become a user?' }, 
                             class: "btn btn-custom btn-danger" %>
-          </td> 
+            </td> 
+          <% end %>
         </tr>
       <% end %>
     </tbody>
@@ -67,13 +69,13 @@
             <%= user.email %>
           </td>
           <td style="text-align:center">  
-            <%= user.items.where(status: Item::PENDING).count() %>
+            <%= user.items.pendings.count %>
           </td>
           <td style="text-align:center">   
-            <%= user.items.where(status: Item::APPROVED).count() %>
+            <%= user.items.approveds.count %>
           </td>
           <td style="text-align:center">  
-            <%= user.items.where(status: Item::DENIED).count() %>
+            <%= user.items.denieds.count %>
           </td>
           <td>
             <%= link_to 'Promote', promote_admin_path(user.id),

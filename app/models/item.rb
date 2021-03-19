@@ -17,4 +17,9 @@ class Item < ApplicationRecord
     validates :category, presence: true                                     #category of the item
     validates :status, presence: true
 
+    scope :denieds, -> { where(status: Item::DENIED) }
+    scope :approveds, -> { where(status: Item::APPROVED) }
+    scope :pendings, -> { where(status: Item::PENDING) }
+
+
 end

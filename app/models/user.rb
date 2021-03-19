@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: {with: EMAIL_REGEX}
+  validates :banned, presence: true
   
   def login
 
@@ -34,4 +35,9 @@ class User < ApplicationRecord
     end
   end
         
+
+  scope :admins, -> { where(admin: true) }
+  scope :users, -> {where(admin: false) }
+
+
 end

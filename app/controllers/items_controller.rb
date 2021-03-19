@@ -186,6 +186,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
-    params.require(:item).permit(:title, :author, :description, :category, :url, :report_id)
+    params.require(:item).permit(:title, :author, :description, :category, :url, :report_id, :user)
   end
 end

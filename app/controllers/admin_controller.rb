@@ -10,8 +10,8 @@ class AdminController < ApplicationController
     def user_console
         @everyone = User.all
 
-        @admins = @everyone.where(admin: true)
-        @users = @everyone.where(admin: false)
+        @admins = User.admins
+        @users = User.users
     end
 
     def promote
@@ -23,8 +23,10 @@ class AdminController < ApplicationController
     end
 
     def demote
-        @user = User.find(params[:id])
-        @user.update_attribute(:admin, false)
+        if User.admins.count > 1
+            @user = User.find(params[:id])
+            @user.update_attribute(:admin, false)
+        end
     
         redirect_to :action => 'user_console'
     end
@@ -32,6 +34,7 @@ class AdminController < ApplicationController
     def ban
         @user = User.find(params[:id])
         @user.update_attribute(:banned, true)
+        @user.update_attribute(:admin, false)
     
         redirect_to :action => 'user_console'
     end
