@@ -2,9 +2,9 @@ class ItemsController < ApplicationController
   #This controller's function is for the items that are stored in the library database. It has operations that create, delete,
   #and edit the items
 
-  before_action :check_admin, except: [:create, :check_user, :new, :index, :show, :search, :filter, :not_admin]         #WIP must verify that the user is an admin in order for to run any procudure in this controller. An admin
+
+  before_action :check_admin, except: [:create, :check_user, :new, :index, :show, :search, :filter, :not_admin]
   before_action :check_user, only: [:new]
-                                              #should be the only user that is able to add/edit/delete items in the database
 
 
   def index                                   #items in library
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   
   
   def check_user
-    if current_user == nil or !current_user.confirmed?
+    if current_user == nil or !current_user.confirmed? or current_user.banned
       redirect_to '/items/not_user'
     end 
   end
@@ -94,6 +94,7 @@ class ItemsController < ApplicationController
 
   def create                                  #function meant to handle the creation of a new library item in the database
     @item = Item.new(item_params)
+    @item.user = current_user
     if @item.save
       flash[:success] = "You have added a new resource item to the library!"
       redirect_to '/items/new'
@@ -185,6 +186,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params                             #verifies that the item being created has fulfilled all of the parameters
-    params.require(:item).permit(:title, :author, :description, :category, :url, :report_id)
+    params.require(:item).permit(:title, :author, :description, :category, :url, :report_id, :user)
   end
 end

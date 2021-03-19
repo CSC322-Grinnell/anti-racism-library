@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(email: "admin@grinnell.edu", username: "admin", password: "admin_password", admin:false)
+    @user = User.new(email: "somebody@grinnell.edu", username: "somebody", password: "my_password", admin:false)
   end
 
   test "email validation should accept valid addresses" do
@@ -24,6 +24,14 @@ class UserTest < ActiveSupport::TestCase
 
   test "users should not be admins" do
     assert_not @user.admin?, "regular users should not be admins"
+  end
+
+  test "users should not be banned" do
+    assert_not @user.banned, "users should not be banned"
+  end
+
+  test "users should initially not have suggested any items" do
+    assert @user.items.count() == 0, "users should have suggested no items"
   end
 
 end
