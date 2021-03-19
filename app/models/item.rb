@@ -2,6 +2,9 @@ class Item < ApplicationRecord
     #The Ruby Model for the Items that are stored in the library database. Forms must be completely filled out in order for the items to be stored in the
     #database.
 
+    # Associate this item with the user who suggested it
+    belongs_to :user, optional: true
+ 
     PENDING = 0.freeze
     APPROVED = 1.freeze
     DENIED = -1.freeze

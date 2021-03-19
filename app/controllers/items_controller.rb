@@ -94,6 +94,7 @@ class ItemsController < ApplicationController
 
   def create                                  #function meant to handle the creation of a new library item in the database
     @item = Item.new(item_params)
+    @item.user = current_user
     if @item.save
       flash[:success] = "You have added a new resource item to the library!"
       redirect_to '/items/new'

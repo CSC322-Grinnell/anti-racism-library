@@ -38,6 +38,12 @@
 </div>
 
 <% if current_user and current_user.admin %>
+  
+<% if !@item.user.nil? %>  
+  <h3> Suggested by: <%= @item.user.username%> (<%= @item.user.email%>) </h3>
+<% end %>
+
+
 <div class="row">
 <% if (@item.status == (Item::PENDING))%>
           <td>
