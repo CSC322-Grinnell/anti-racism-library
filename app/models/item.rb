@@ -21,5 +21,10 @@ class Item < ApplicationRecord
     scope :approveds, -> { where(status: Item::APPROVED) }
     scope :pendings, -> { where(status: Item::PENDING) }
 
+    #Gets a string representing the status as denied, approved, or pending
+    def status_string
+        ["Pending", "Approved", "Denied"].at(status)
+    end
+
 
 end

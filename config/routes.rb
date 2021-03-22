@@ -63,6 +63,10 @@ Rails.application.routes.draw do
 
   get 'admin/:id/ban', to: 'admin#ban'
   get 'admin/:id/unban', to: 'admin#unban'
+
+  get 'admin/show_user/:id', :to => 'admin#show_user', :as => :user
+
+  #get 'admin/:id/show_user', to: 'admin#show_user'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
