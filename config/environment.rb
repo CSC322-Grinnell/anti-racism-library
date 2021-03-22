@@ -5,6 +5,8 @@ require_relative 'application'
 Rails.application.initialize!
 
 
+#Beginning code to setting up a mailing server
+
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
    :tls => true,
