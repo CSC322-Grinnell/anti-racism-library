@@ -10,16 +10,21 @@ class Item < ApplicationRecord
     DENIED = -1.freeze
 
 
-    validates :title, presence: true, length: { maximum: 1000 }             #title of the item
-    validates :author, presence: true, length: { maximum: 50 }              #author of the item
-    validates :description, presence: true, length: { maximum: 1000 }       #description of the item
-    validates :url, length: { maximum: 1000 }                               #url of the item
-    validates :category, presence: true                                     #category of the item
+    validates :title, presence: true, length: { maximum: 1000 }                                #title of the item
+    validates :author, presence: true, length: { maximum: 1000 }                               #author of the item
+    validates :description, presence: true, allow_nil: true, length: { maximum: 1000 }         #description of the item
+    validates :url, length: { maximum: 1000 }                                                  #url of the item
+    validates :category, presence: true                                                        #category of the item
     validates :status, presence: true
 
     scope :denieds, -> { where(status: Item::DENIED) }
     scope :approveds, -> { where(status: Item::APPROVED) }
     scope :pendings, -> { where(status: Item::PENDING) }
+
+    #Gets a string representing the status as denied, approved, or pending
+    def status_string
+        ["Pending", "Approved", "Denied"].at(status)
+    end
 
 
 end

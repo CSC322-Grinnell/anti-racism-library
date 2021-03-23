@@ -5,6 +5,9 @@ Milica Cvrkota, Anushka Kulshereshtha, Prajita Niraula, Lanea Rohan, and Rudy Ve
 ARL Team 2:
 Adam Mao, Charun Upara, Christa Cochran, Haakon Larsen, Quang Duc, and Tran Le
 
+ARL Team 3:
+Aleph Aseffa, Benjamin Mikek, Kody Harrison, Noah Burgess, Ryuta Kure
+
 Client:
 Nicole Eikmeier
 

@@ -14,6 +14,12 @@ class AdminController < ApplicationController
         @users = User.users
     end
 
+    def show_user
+        @user = User.find(params[:id])
+        @multiple_admins = User.admins.count > 1
+        #redirect_to :action => 'show_user'
+    end
+
     def promote
         @user = User.find(params[:id])
         @user.update_attribute(:admin, true)

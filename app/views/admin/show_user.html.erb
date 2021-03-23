@@ -1,0 +1,67 @@
+
+<h1> <%= @user.username%> <% if @user.admin?%> (Admin) <% end %></h1>
+<h3> Email: <%= @user.email %> </h3>
+<h3> Approved: <%= @user.items.approveds.count %> </h3>
+<h3> Pending: <%= @user.items.pendings.count %> </h3>
+<h3> Denied: <%= @user.items.denieds.count %> </h3>
+
+<% if !@user.items.empty?%>
+  <h3>Resources suggested: </h3>
+    <table>
+    <tbody>
+    <tr>
+      <th style="width:30%;"> Title </th>
+      <th style="width:30%;"> Suggested at </th>
+      <th style="width:30%;"> Status </th>
+    </tr>
+      <% @user.items.each do |item| %>
+        <tr>
+          <td style="width:50%;"> 
+            <%= link_to item.title, item %>
+          </td>
+          <td style="width:30%;"> 
+            <%= item.created_at %>
+          </td>
+          <td style="width:30%;">
+            <%= item.status_string %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if @user.admin?%>
+    <% if @multiple_admins %>
+        <div class="row">
+          <td>
+              <%= link_to 'Demote', demote_admin_path(@user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to demote this admin to become a user?' }, 
+                            class: "btn btn-custom btn-danger" %>
+            </td> 
+    <% end %>
+</div>
+<% else%>
+<td>
+            <%= link_to 'Promote', promote_admin_path(@user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to promote this user to become an admin?' }, 
+                            class: "btn btn-custom btn-success" %>
+          </td> 
+          <td>
+            <% if(@user.banned)%>
+              <%= link_to 'Unban', unban_admin_path(@user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to unban this user?' }, 
+                            class: "btn btn-custom btn-success" %>
+            <% else %>
+              <%= link_to 'Ban', ban_admin_path(@user.id),
+                            method: :patch,
+                            data: { confirm: 'Are you sure to ban this user?' }, 
+                            class: "btn btn-custom btn-danger" %>
+            <% end %>
+          </td> 
+
+<% end %>
+

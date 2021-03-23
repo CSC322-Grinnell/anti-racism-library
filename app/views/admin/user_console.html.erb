@@ -19,12 +19,12 @@
       <% @admins.each do |user| %>
         <tr>
           <td> 
-            <%= user.username %>
+            <%= link_to user.username, user %>
           </td>
           <td>  
             <%= user.email %>
           </td>
-          <td style="text-align:center">  
+          <td style="text-align:center">
             <%= user.items.pendings.count %>
           </td>
           <td style="text-align:center">   
@@ -63,7 +63,7 @@
       <% @users.each do |user| %>
         <tr>
           <td> 
-            <%= user.username %>
+            <%= link_to user.username, user %>
           </td>
           <td>  
             <%= user.email %>
