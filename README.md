@@ -9,7 +9,7 @@ ARL Team 3:
 Aleph Aseffa, Benjamin Mikek, Kody Harrison, Noah Burgess, Ryuta Kure
 
 ARL Team 4:
-Amisha Pershad, 
+Amisha Pershad, Jung Won Lee, Peter Xiangdong, Felipe Monteforte Ferreira, Alex Lavery
 
 Client:
 Nicole Eikmeier
