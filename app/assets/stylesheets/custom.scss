@@ -120,8 +120,10 @@ button {
   color: black;
   display: flex;
   border-radius: 8px;
-  right: 50%;
-  width: 70px;
+  right: 35%;
+
+  margin-left: 10px;
+  margin-right: 10px;
   
   font-family: "Roboto", sans-serif;
   font-size: 1em;
@@ -142,6 +144,7 @@ button:hover, button:focus, button:active {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
+
 
 /* misc design */
 
