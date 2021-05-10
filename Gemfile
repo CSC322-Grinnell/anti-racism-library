@@ -52,6 +52,10 @@ group :production do
   gem 'aws-sdk-s3', '1.46.0', require: false
 end
 
+group :windows do
+  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # Uncomment the following line if you're running Rails
 # on a native Windows system:
