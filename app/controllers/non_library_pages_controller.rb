@@ -11,4 +11,7 @@ class NonLibraryPagesController < ApplicationController
   def about_us
   end
   
+  def contact_us_submit
+  end
+  
 end

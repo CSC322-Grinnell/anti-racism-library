@@ -29,6 +29,11 @@ input[type=email], select, textarea {
 }
 
 input[type=submit] {
+  position: relative;
+  margin-top: 60px;
+  left: 40%;
+  right: 60%;
+  
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -40,6 +45,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+  transition: 0.3s;
 }
 
 .container {
@@ -61,8 +67,9 @@ input[type=submit]:hover {
 
     <label for="subject">Subject</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
-
-    <input type="submit" value="Submit">
+    <a href="/contact_us/submit">
+       <input type="submit" value="Submit">
+    </a>
   </form>
 </div>
 
