@@ -15,6 +15,11 @@ $background-light: rgb(255,236,236);
   padding-bottom: 100px;
 }
 
+.logo{
+    
+padding-right:25px;
+    
+}
 .btn-primary {
         color: $dark;
         border-color: $light;
@@ -43,7 +48,7 @@ $background-light: rgb(255,236,236);
 
 .navbar {
         margin-bottom: 20px;
-        background: $dark ;
+        background: rgb(173, 216, 230);
 } 
 
 .row{
@@ -82,10 +87,16 @@ p {
   height: 60px; /* Set the fixed height of the footer here */
   line-height: 60px; /* Vertically center the text there */
   background-color: $background-dark;
-  color: $dark;
+  color: $light;
   text-align: center;
 }
 
 .btn-custom {
     width:100px;    
 }
+
+.navbar-dark .navbar-nav .nav-link{
+    color: black;
+}
+.navbar-dark .navbar-brand {
+    color: black;}
