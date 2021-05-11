@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   # get pages for semi-static non-resource/user pages
+ 
   get '/contact_us', to: 'non_library_pages#contact_us'
   get '/suggest_a_resource', to: 'non_library_pages#suggest_resource'
   get '/about_us', to: 'non_library_pages#about_us'
