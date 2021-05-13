@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=email], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  position: relative;
+  margin-top: 60px;
+  left: 40%;
+  right: 60%;
+  
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  width : 20%;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+  transition: 0.3s;
+}
+
+label[for=subject]
+{
+  display: block;
+  text-align: center;
+  line-height: 150%;
+  font-size: 1.2em;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.container {
+  border-radius: 5px;
+}
+
+.container.contact_submit_guest_message {
+  margin-top: 50px;
+  color: #3E5295;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2em;
+  text-align: center;
+}
+
+.container.contact_submit_success_message {
+  margin-top: 50px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2em;
+  text-align: center;
+}
+
+.sign_in_link {
+  color: red;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1em;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Contact Form</h1>
+
+<% if user_signed_in? %>
+  <div class="container contact_submit_success_message">
+    Submission successful! Thank you for contacting us!
+  </div>
+<% else %>
+  <div class="container">
+    <div class="container contact_submit_guest_message">
+      You are submitting as guest. If you wish to sign in and submit, please
+      <a href="/users/sign_in" class="sign_in_link">
+         sign in
+      </a>
+      </a>
+      .
+    </div>
+    
+    <form action="/contact_us/submit">
+      <label for="flname">First and Last Name</label>
+      <input type="text" id="flname" name="first_and_last_name" placeholder="Your name.." required>
+
+      <label for="email"> Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Your email..">
+      
+      <label for="subject">Your submission:</label>
+      <textarea id="subject" name="subject" value="<?php echo $_GET['subject']; ?>" style="height:100px" required></textarea>
+      
+      
+      <input type="submit" value="Submit as guest">
+         
+    </form>
+  </div>
+<% end %>
+
+</body>
+</html>
+

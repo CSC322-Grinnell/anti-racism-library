@@ -29,6 +29,11 @@ input[type=email], select, textarea {
 }
 
 input[type=submit] {
+  position: relative;
+  margin-top: 60px;
+  left: 40%;
+  right: 60%;
+  
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -40,6 +45,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+  transition: 0.3s;
 }
 
 .container {
@@ -52,17 +58,21 @@ input[type=submit]:hover {
 <h1>Contact Form</h1>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form action="/contact_us/submit", method="get">
     <label for="flname">First and Last Name</label>
-    <input type="text" id="flname" name="first_and_last_name" placeholder="Your name..">
+    <input type="text" id="flname" name="first_and_last_name" placeholder="Your name.." required>
 
     <label for="email"> Email Address</label>
     <input type="email" id="email" name="email" placeholder="Your email..">
 
     <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px" required></textarea>
+    
 
-   <input type="submit" value="Submit">
+       <input type="submit" value="Submit">
+
+
+
   </form>
 </div>
 
