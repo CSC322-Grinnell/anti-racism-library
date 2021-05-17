@@ -6,9 +6,12 @@ $light: white;
 $background-dark: rgb(218, 41, 28); /* grinnell-red */
 $background-light: rgb(255,236,236);
 
+
+
 header {
   margin-bottom: 10px;
 }
+
 
 .footer {
   border-style: inset;
@@ -113,9 +116,20 @@ p {
 .navbar-dark .navbar-brand {
     color: black;}
     
+/* navbar effects */
+
+.navbar-div {
+  height: 100%;
+  overflow: visible;
+}
+
+nav {
+  position: sticky;
+}
+    
 /* login button effects */
 
-button {
+.navbar-div button {
   position: relative;
   
   color: black;
@@ -123,8 +137,10 @@ button {
   border-radius: 8px;
   right: 35%;
 
-  margin-left: 10px;
-  margin-right: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 15px;
   
   font-family: "Roboto", sans-serif;
   font-size: 1em;
@@ -138,11 +154,12 @@ button {
   transition-duration: 0.5s;
   webkit-transition-property: box-shadow, transform;
   transition-property: box-shadow, transform;
+  right: 20%;
 }
 
-button:hover, button:focus, button:active {
+.navbar-div button:hover {
+  text-decoration: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
 
@@ -152,4 +169,120 @@ button:hover, button:focus, button:active {
 label {
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.btn.btn-lg.btn-outline-secondary {
+  position: relative;
+  
+  left: 95.5%;
+  top: -46.8px;
+  
+  background: lightgreen;
+  border: none;
+  transition: 0.5s;
+}
+
+
+.row .btn {
+  padding: 5px;
+  margin: 5px;
+}
+
+
+#page {
+  background: rgb(173, 216, 230);
+}
+
+.container.index button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.2);
+}
+
+/* show page layout */
+
+.show-container h3 {
+  font-size: 1em;
+  width:fit-content;
+  height:fit-content;
+}
+
+.show-container h3.category {
+  position: relative;
+  font-family: "Courier New", monospace;
+  font-size: 1.5em;
+  font-weight: 800;
+  margin-bottom: 15px;
+  
+}
+
+.show-container h3.category:hover{
+  cursor: help;
+}
+
+.show-container h3.category:active :first-child {
+  opacity: 1;
+}
+
+.show-container h3.category .instruction {
+  opacity: 0;
+  font-family: "Times New Roman", monospace;
+  font-size: .6em;
+  font-weight: 200;
+  width: 143px;
+  position: absolute;
+  left: 80px;
+  bottom: 10px;
+  background: #7DF0DA;
+  padding: 5px;
+  border-radius: 15px;
+  transition: opacity .5s;
+}
+
+.show-container h3.author {
+  margin-bottom: 10px;
+}
+
+.show-container h3.description
+{
+  width: 80%;
+  font-family: "Brush Script MT", cursive;
+  margin-bottom: 20px;
+}
+
+.show-container .card {
+  position: relative;
+  text-align: center;
+  width: 300px;
+  height: 500px;
+  border-radius: 20px;
+  
+  background-image: linear-gradient(to bottom right, lightgreen, pink, lavender);
+}
+
+.show-container .card .card-title {
+  margin-top: 10%;
+}
+
+.show-container .card p{
+  position: absolute;
+  top: 30%;
+}
+
+.show-container .card .btn{
+  position: relative;
+  width: auto;
+  top: 50%;
+}
+
+.show-container .btn.btn-danger {
+  position: relative;
+  margin-top: 20%;
+  left: 40%;
+}
+
+divider {
+  display: block;
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin: 0;
 }
