@@ -53,7 +53,7 @@
 <% end %>
 
 
-<div class="row">
+<div class="row-buttons">
 <% if (@item.status == (Item::PENDING))%>
           <td>
             <%= link_to 'Edit', edit_item_path(@item.id), class: "btn btn-custom btn-secondary" %>
@@ -111,7 +111,7 @@
   <% end %>
 
 
-<div class="row">
+<div class="row-report-button">
   <%= link_to "Report This Resource", report_new_path(item_id: @item.id), class: "btn btn-danger" %>
 </div>
 
