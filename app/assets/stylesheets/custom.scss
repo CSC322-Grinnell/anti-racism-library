@@ -103,11 +103,12 @@ p {
   background-color: $background-dark;
   color: $light;
   text-align: center;
-  font-size: 18px;
+  font-size: 1.1vw;
 }
 
 .btn-custom {
-    width:100px;    
+  height: auto;
+  width:100px;    
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -123,11 +124,37 @@ p {
   overflow: visible;
 }
 
-nav {
-  position: sticky;
+.navbar-div nav {
+  position: relative;
+}
+
+.navbar-div nav .logo {
+  position: relative;
+  width: 5vw;
+}
+
+.navbar-div .collapse.navbar-collapse {
+  
+}
+
+.collapse.navbar-collapse ul li a {
+  position: relative;
+  left: -20vw;
+  font-size: 1.1vw;
+  transform: translate(25vw, 0);
+}
+
+.navbar-div nav a.navbar-brand {
+  font-size: 1.3vw;
 }
     
 /* login button effects */
+
+.navbar-div .navbar-nav.mr-right
+{
+  position: relative;
+  right: -1%;
+}
 
 .navbar-div button {
   position: relative;
@@ -143,7 +170,7 @@ nav {
   margin-right: 15px;
   
   font-family: "Roboto", sans-serif;
-  font-size: 1em;
+  font-size: 0.9vw;
   font-weight: bold;
   background: #DFF1EB;
   text-decoration: none;
@@ -171,12 +198,13 @@ label {
   margin-bottom: 10px;
 }
 
+.container.index .form-control.form-control-lg.mr-sm-2 {
+  width: 60vw;
+}
+
 .btn.btn-lg.btn-outline-secondary {
-  position: relative;
-  
-  left: 95.5%;
-  top: -46.8px;
-  
+  position: absolute;
+
   background: lightgreen;
   border: none;
   transition: 0.5s;
@@ -274,10 +302,23 @@ label {
   top: 50%;
 }
 
-.show-container .btn.btn-danger {
+.show-container .btn.btn-custom {
   position: relative;
-  margin-top: 20%;
+  font-size: 0.8vw;
+  margin-top: 2%;
+  margin-left: 5%;
+  
+  left: 2%;
+}
+
+.show-container .row-report-button {
+  position: relative;
+  margin-top: 10%;
   left: 40%;
+}
+
+.show-container .row-buttons {
+  display: block;
 }
 
 divider {
@@ -285,4 +326,23 @@ divider {
   border-top-width: 1px;
   border-top-style: solid;
   margin: 0;
+}
+
+/* page transition effects */
+
+#main-layout {
+  animation: transitionIn 1.2s;
+}
+
+@keyframes transitionIn {
+  0% {
+    opacity: 0;
+
+  }
+  
+  
+  100% {
+    opacity: 1;
+
+  }
 }
