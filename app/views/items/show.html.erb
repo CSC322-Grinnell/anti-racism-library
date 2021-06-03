@@ -1,8 +1,17 @@
+<div class="show-container">
 
 <h1> <%= @item.title %> </h1>
-<h3> Author: <%= @item.author %> </h3>
-<h3> Description: <%= @item.description %> </h3>
-<h3> Category: <%=  @item.category %> </h3>
+
+<h3 class="category">
+  <%=  @item.category %>
+  <div class="instruction">
+  Categories of this item
+  </div>
+</h3>
+
+<h3 class="author"> Author:  <%= @item.author %> </h3>
+<h3 class="description"> <%= @item.description %> </h3>
+
 <%= link_to "Read More", @item.url, class: "btn btn-lg btn-primary" %>
 
 <div class="container">
@@ -44,7 +53,7 @@
 <% end %>
 
 
-<div class="row">
+<div class="row-buttons">
 <% if (@item.status == (Item::PENDING))%>
           <td>
             <%= link_to 'Edit', edit_item_path(@item.id), class: "btn btn-custom btn-secondary" %>
@@ -102,6 +111,8 @@
   <% end %>
 
 
-<div class="row">
+<div class="row-report-button">
   <%= link_to "Report This Resource", report_new_path(item_id: @item.id), class: "btn btn-danger" %>
+</div>
+
 </div>

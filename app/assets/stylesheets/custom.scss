@@ -6,6 +6,20 @@ $light: white;
 $background-dark: rgb(218, 41, 28); /* grinnell-red */
 $background-light: rgb(255,236,236);
 
+
+
+header {
+  margin-bottom: 10px;
+}
+
+
+.footer {
+  border-style: inset;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+}
+
 #page {
   position: relative;
   min-height: 100vh;
@@ -15,6 +29,11 @@ $background-light: rgb(255,236,236);
   padding-bottom: 100px;
 }
 
+.logo{
+    
+padding-right:25px;
+    
+}
 .btn-primary {
         color: $dark;
         border-color: $light;
@@ -43,7 +62,8 @@ $background-light: rgb(255,236,236);
 
 .navbar {
         margin-bottom: 20px;
-        background: $dark ;
+        background: black;
+        
 } 
 
 .row{
@@ -82,10 +102,249 @@ p {
   height: 60px; /* Set the fixed height of the footer here */
   line-height: 60px; /* Vertically center the text there */
   background-color: $background-dark;
-  color: $dark;
+  color: $light;
   text-align: center;
+  font-size: 1.1vw;
 }
 
 .btn-custom {
-    width:100px;    
+  height: auto;
+  width:100px;    
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: white;
+}
+.navbar-dark .navbar-brand {
+    color: white;}
+    
+/* navbar effects */
+
+.navbar-div {
+  height: 100%;
+  overflow: visible;
+}
+
+.navbar-div nav {
+  position: relative;
+}
+
+.navbar-div nav .logo {
+  position: relative;
+  width: 5vw;
+}
+
+.navbar-div .collapse.navbar-collapse {
+  
+}
+
+.collapse.navbar-collapse ul li a {
+  position: relative;
+  left: -20vw;
+  font-size: 1.1vw;
+  transform: translate(25vw, 0);
+}
+
+.navbar-div nav a.navbar-brand {
+  font-size: 1.3vw;
+}
+    
+/* login button effects */
+
+.navbar-div .navbar-nav.mr-right
+{
+  position: relative;
+  right: -1%;
+}
+
+.navbar-div button {
+  position: relative;
+  
+  color: black;
+  display: flex;
+  border-radius: 8px;
+  right: 35%;
+
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 15px;
+  
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9vw;
+  font-weight: bold;
+  background: #DFF1EB;
+  text-decoration: none;
+  
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  
+  webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+  right: 20%;
+}
+
+.navbar-div button:hover {
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.2);
+}
+
+
+/* misc design */
+
+label {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.container.index .form-control.form-control-lg.mr-sm-2 {
+  width: 60vw;
+}
+
+.btn.btn-lg.btn-outline-secondary {
+  position: absolute;
+
+  background: lightgreen;
+  color: black;
+  border: none;
+  transition: 0.5s;
+}
+
+
+.row .btn {
+  padding: 5px;
+  margin: 5px;
+}
+
+
+#page {
+  background: rgb(173, 216, 230);
+}
+
+.container.index button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.2);
+}
+
+/* show page layout */
+
+.show-container h3 {
+  font-size: 1em;
+  width:fit-content;
+  height:fit-content;
+}
+
+.show-container h3.category {
+  position: relative;
+  font-family: "Courier New", monospace;
+  font-size: 1.5em;
+  font-weight: 800;
+  margin-bottom: 15px;
+  
+}
+
+.show-container h3.category:hover{
+  cursor: help;
+}
+
+.show-container h3.category:active :first-child {
+  opacity: 1;
+}
+
+.show-container h3.category .instruction {
+  opacity: 0;
+  font-family: "Times New Roman", monospace;
+  font-size: .6em;
+  font-weight: 200;
+  width: 143px;
+  position: absolute;
+  left: 80px;
+  bottom: 10px;
+  background: #7DF0DA;
+  padding: 5px;
+  border-radius: 15px;
+  transition: opacity .5s;
+}
+
+.show-container h3.author {
+  margin-bottom: 10px;
+}
+
+.show-container h3.description
+{
+  width: 80%;
+  font-family: "sans-serif", cursive;
+  margin-bottom: 20px;
+}
+
+.show-container .card {
+  position: relative;
+  text-align: center;
+  width: 300px;
+  height: 500px;
+  border-radius: 20px;
+  
+  background-image: linear-gradient(to bottom right, lightgreen, pink, lavender);
+}
+
+.show-container .card .card-title {
+  margin-top: 10%;
+}
+
+.show-container .card p{
+  position: absolute;
+  top: 30%;
+}
+
+.show-container .card .btn{
+  position: relative;
+  width: auto;
+  top: 50%;
+}
+
+.show-container .btn.btn-custom {
+  position: relative;
+  font-size: 0.8vw;
+  margin-top: 2%;
+  margin-left: 5%;
+  
+  left: 2%;
+}
+
+.show-container .row-report-button {
+  position: relative;
+  margin-top: 10%;
+  left: 40%;
+}
+
+.show-container .row-buttons {
+  display: block;
+}
+
+divider {
+  display: block;
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin: 0;
+}
+
+/* page transition effects */
+
+#main-layout {
+  animation: transitionIn 1.2s;
+}
+
+@keyframes transitionIn {
+  0% {
+    opacity: 0;
+
+  }
+  
+  
+  100% {
+    opacity: 1;
+
+  }
 }
