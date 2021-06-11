@@ -73,3 +73,6 @@ https://www.figma.com/file/N1mnW7dft8cuZtPbbdI7rk/Anti-racism-site-mockup
 
 Link to Devise Wiki:
 https://github.com/heartcombo/devise/wiki
+
+Link to Heroku website:
+https://anti-racism-library.herokuapp.com/
