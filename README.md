@@ -74,3 +74,8 @@ https://github.com/heartcombo/devise/wiki
 
 Link to Heroku website:
 https://anti-racism-library.herokuapp.com/
+
+Notes: 
+
+For some reason the previewon cloud9 is different from the deployed site on heroku. 
+We were unable to figure out what the reason behind this was. 
