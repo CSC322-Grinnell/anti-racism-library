@@ -26,7 +26,7 @@ The Grinnell Computer Science department has always valued diversity and inclusi
 goals and made inclusion and equity in computing one of their top priorities. This project hopes to extend the department’s efforts to that end by 
 introducing a resource that enables individuals to educate themselves on issues surrounding anti-racism. 
 
-The Anti Racism Library would be a web-app that curates resources on anti-racism and cultural awareness. 
+The Anti Racism Library would be a web app that curates resources on anti-racism and cultural awareness. 
 The goal is to have a tool that can be used
 in and outside of classes, with a searchable list of resources, based on keywords and relevance. This project will serve as a starting point for the 
 Computer Science Department to provide anti-racism resources that will be available for Grinnell faculty, staff and students.
@@ -66,7 +66,7 @@ search bar. The resources page will have a list of resources included that will 
 Links
 -----
 
-Link to figma mockup:
+Link to Figma mockup:
 https://www.figma.com/file/N1mnW7dft8cuZtPbbdI7rk/Anti-racism-site-mockup
 
 Link to Devise Wiki:
@@ -77,5 +77,5 @@ https://anti-racism-library.herokuapp.com/
 
 Notes: 
 
-For some reason the previewon cloud9 is different from the deployed site on heroku. 
+For some reason, the preview on cloud9 is different from the deployed site on Heroku. 
 We were unable to figure out what the reason behind this was. 
